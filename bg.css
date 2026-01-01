@@ -355,6 +355,45 @@ strong {
   border: 1px solid #ccc;
 }
 
+/*Tips section*/
+.tips-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+  gap: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 50px;
+  padding-bottom: 200px;
+}
+
+/*Tips bar*/
+.tips-card {
+  background-color: #d5f4e6;
+  border-radius: 20px 20px;
+  border-right: 4px solid #77c092;
+  display: flex;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/*Tips content*/
+.tips-content {
+  padding: 25px;
+}
+
+/*Tips h3*/
+.tips-content h3 {
+  display: grid;
+  grid-template-columns: minmax(50px) ,1fr;
+  background-color: #17a12e;
+  border: 2px solid white;
+  border-radius: 20px 20px ;
+  color: #fbfbfb;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  padding: 10px 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
 /* Responsive design */
 @media (max-width: 600px) {
   .container {
