@@ -407,6 +407,244 @@ strong {
   }
 }
 
+/* === donation === */
+header h1 {
+    margin: 0;
+    font-size: 22px;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+
+nav a.active {
+    font-weight: bold;
+    color: #333;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+    padding: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.content {
+    display: flex;
+    gap: 30px;
+}
+
+/* ===== LEFT PANEL ===== */
+.left-panel {
+    width: 35%;
+}
+
+.left-panel h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.location-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    background-color: #eee;
+}
+
+.section {
+    background-color: #444;
+    color: #fff;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.section.light {
+    background-color: #ccc;
+    color: #000;
+    text-align: center;
+    font-size: 13px;
+}
+
+.food-bank-name {
+    color: #ffffff;   /* green like your screenshot */
+    font-weight: bold;
+}
+
+
+/* ===== RIGHT PANEL ===== */
+.right-panel {
+    width: 65%;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #666;
+    border-radius: 4px;
+    min-height: 350px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .left-panel,
+    .right-panel {
+        width: 100%;
+    }
+}
+
+/* === get involved === */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 22px;
+}
+
+/* ===== FORM ELEMENTS ===== */
+.form-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 4px;
+}
+
+.input-box,
+textarea {
+    width: 100%;
+    background-color: #e0e0e0;
+    border: none;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    resize: none;
+}
+
+textarea.large {
+    height: 120px;
+}
+
+textarea.medium {
+    height: 100px;
+}
+
+.upload-box {
+    background-color: #ddd;
+    height: 60px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-size: 13px;
+    border-radius: 4px;
+}
+
+
+.submit-box {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #16a34a;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 15px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.submit-box span {
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.submit-box span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.submit-box:hover span {
+  padding-right: 25px;
+}
+
+.submit-box:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+}
+
+form label {
+  display: block;
+  margin-top: 15px;
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #16a34a;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 15px;
+  padding: 15px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.button span {
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
 footer {
   background-color: #16a34a;
   color: white;
