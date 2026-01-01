@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Involved</title>
-    <link rel="stylesheet" href="bg.css">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get Involved</title>
+  <link rel="stylesheet" href="bg.css">
 </head>
 
 <body>
@@ -22,6 +22,37 @@
         <li><a href="donate.html">Donation</a></li>
         <li><a href="getinvolved.html">Get Involved</a></li>
     </ul>
+
+    <div class="container">
+        <h2>Take the FoodShare Pledge</h2>
+
+        <form onsubmit="return validateForm()">
+
+            <label>Pledge</label>
+            <textarea rows="5" required></textarea>
+
+            <label>Name</label>
+            <input type="text" placeholder="Enter name" required>
+
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Enter email" required>
+
+            <label>Your story</label>
+            <textarea rows="5" required></textarea>
+
+            <br><br>
+
+        <button class="button"style="vertical-align:middle"><span><a href="https://example.com" target="_blank">Upload your image here</span></a></button>
+        <br><br> 
+
+            <label>Feedback & Suggestion</label>
+            <textarea rows="5" required></textarea>            
+            <br>
+            
+        <button class="submit-box" style="vertical-align:middle"><span>Submit your pledge</span></a></button>
+        </form>
+        </div>
+    </div>
 
     <footer>
         &copy; FoodShare | Contact Us: <a href="mailto:s75142@ocean.umt.edu.my">Our Email</a>
