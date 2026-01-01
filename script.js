@@ -17,3 +17,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+function searchRecipe() {
+    const input = document
+        .getElementById("ingredientSearch")
+        .value
+        .toLowerCase();
+
+    const recipes = document.querySelectorAll(".recipe-card");
+
+    recipes.forEach(recipe => {
+        const ingredients = recipe.getAttribute("data-ingredients");
+
+        if (ingredients.includes(input)) {
+            recipe.style.display = "block";
+        } else {
+            recipe.style.display = "none";
+        }
+    });
+}
+

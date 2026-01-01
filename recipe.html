@@ -1,27 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe</title>
     <link rel="stylesheet" href="bg.css">
 </head>
+
 <body>
-            <ul class="navbar">
+    <ul class="navbar">
+        <li class="logo">
+            <a href="index.html">
+                <img src="Images/Logo.webp" alt="Logo">
+            </a>
+        </li>
 
-            <div class="logo">
-                <a href="index.html" target="_self">
-                    <img src="Images/Logo.webp" alt="Logo">
-                </a>
+        <li><a href="about.html">About</a></li>
+        <li><a href="tips.html">Tips</a></li>
+        <li><a href="recipe.html">Recipes</a></li>
+        <li><a href="donate.html">Donation</a></li>
+        <li><a href="getinvolved.html">Get Involved</a></li>
+    </ul>
 
-            </div>
+    <h1>Creative Recipes to Reduce Food Waste</h1>
 
-            <li></li>
-            <li><a href="about.html" target="_self">About</a></li>
-            <li><a href="tips.html" target="_self">Tips</a></li>
-            <li><a href="recipe.html" target="_self">Recipes</a></li>
-            <li><a href="donate.html" target="_self">Donation</a></li>
-            <li><a href="getinvolved.html" target="_self">Get Involves</a></li>
-        </ul>
+    <div class="search-box">
+        <input type="text" id="ingredientSearch" placeholder="Search by ingredient (e.g. bread, banana)..."
+            onkeyup="searchRecipe()">
+    </div>
+
+    <div class="recipe-grid">
+
+        <details class="recipe-card" data-ingredients="vegetables garlic soy sauce oil">
+            <summary>Vegetable Stir-Fry</summary>
+
+            <p><strong>Ingredients:</strong></p>
+            <ul>
+                <li>Leftover vegetables</li>
+                <li>Garlic</li>
+                <li>Soy sauce</li>
+                <li>Cooking oil</li>
+            </ul>
+
+            <p><strong>Steps:</strong></p>
+            <ol>
+                <li>Chop all vegetables.</li>
+                <li>Heat oil and sauté garlic.</li>
+                <li>Add vegetables and stir-fry.</li>
+                <li>Add soy sauce and serve.</li>
+            </ol>
+        </details>
+
+
+        <details class="recipe-card" data-ingredients="bread milk eggs sugar">
+            <summary>Bread Pudding</summary>
+
+            <p><strong>Ingredients:</strong></p>
+            <ul>
+                <li>Stale bread</li>
+                <li>Milk</li>
+                <li>Eggs</li>
+                <li>Sugar</li>
+            </ul>
+
+            <p><strong>Steps:</strong></p>
+            <ol>
+                <li>Tear bread into pieces.</li>
+                <li>Mix with milk, eggs, and sugar.</li>
+                <li>Pour into baking dish.</li>
+                <li>Bake until golden.</li>
+            </ol>
+        </details>
+
+
+        <details class="recipe-card" data-ingredients="banana fruits yogurt milk juice">
+            <summary>Smoothies</summary>
+
+            <p><strong>Ingredients:</strong></p>
+            <ul>
+                <li>Overripe fruits</li>
+                <li>Yogurt</li>
+                <li>Milk or juice</li>
+            </ul>
+
+            <p><strong>Steps:</strong></p>
+            <ol>
+                <li>Add all ingredients to blender.</li>
+                <li>Blend until smooth.</li>
+                <li>Serve chilled.</li>
+            </ol>
+        </details>
+
+
+    </div>
+
+<script src="script.js"></script>
 </body>
+
 </html>
