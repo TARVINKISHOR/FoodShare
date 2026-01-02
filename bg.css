@@ -356,7 +356,7 @@ strong {
 }
 
 /*Tips section*/
-.tips-container{
+.tips-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
   gap: 30px;
@@ -383,10 +383,10 @@ strong {
 /*Tips h3*/
 .tips-content h3 {
   display: grid;
-  grid-template-columns: minmax(50px) ,1fr;
+  grid-template-columns: minmax(50px), 1fr;
   background-color: #17a12e;
   border: 2px solid white;
-  border-radius: 20px 20px ;
+  border-radius: 20px 20px;
   color: #fbfbfb;
   margin-bottom: 20px;
   margin-left: 10px;
@@ -409,157 +409,184 @@ strong {
 
 /* === donation === */
 header h1 {
-    margin: 0;
-    font-size: 22px;
+  margin: 0;
+  font-size: 22px;
 }
 
 nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: #000;
-    font-size: 14px;
+  margin-left: 20px;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
 }
 
 nav a.active {
-    font-weight: bold;
-    color: #333;
+  font-weight: bold;
+  color: #333;
 }
 
 /* ===== MAIN CONTAINER ===== */
 .container {
-    padding: 30px;
-    max-width: 1200px;
-    margin: auto;
+  padding: 30px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .content {
-    display: flex;
-    gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 
 /* ===== LEFT PANEL ===== */
 .left-panel {
-    width: 35%;
+  width: 35%;
 }
 
 .left-panel h2 {
-    margin-bottom: 15px;
-    font-size: 20px;
+  margin-bottom: 15px;
+  font-size: 20px;
 }
 
 .location-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    background-color: #eee;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  background-color: #eee;
 }
 
 .section {
-    background-color: #444;
-    color: #fff;
-    padding: 12px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    font-size: 14px;
+  background-color: #444;
+  color: #fff;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.6;
+  transition: all 0.3s;
 }
 
 .section.light {
-    background-color: #ccc;
-    color: #000;
-    text-align: center;
-    font-size: 13px;
+  background-color: #ccc;
+  color: #000;
+  text-align: center;
+  font-size: 13px;
 }
 
 .food-bank-name {
-    color: #ffffff;   /* green like your screenshot */
-    font-weight: bold;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: all 0.3s;
 }
 
+.food-bank-name:hover {
+  color: #90ee90;
+  text-shadow: 0 0 5px rgba(144, 238, 144, 0.5);
+}
+
+/* Highlight selected section */
+.section.selected {
+  background-color: #555;
+  border-left: 4px solid #90ee90;
+  box-shadow: 0 0 10px rgba(144, 238, 144, 0.3);
+}
 
 /* ===== RIGHT PANEL ===== */
 .right-panel {
-    width: 65%;
-    background-color: #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    color: #666;
-    border-radius: 4px;
-    min-height: 350px;
+  width: 65%;
+  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #666;
+  border-radius: 4px;
+  min-height: 350px;
+  height: 600px;          /* controls map height */
+  padding: 0;
+  overflow: hidden;
 }
+
+/* Map */
+#map {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    .content {
-        flex-direction: column;
-    }
+  .content {
+    flex-direction: column;
+  }
 
-    .left-panel,
-    .right-panel {
-        width: 100%;
-    }
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    height: 400px;
+  }
 }
 
 /* === get involved === */
 .container {
-    max-width: 900px;
-    margin: auto;
-    padding: 30px;
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
 }
 
 h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    font-size: 22px;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 22px;
 }
 
 /* ===== FORM ELEMENTS ===== */
 .form-box {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 4px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 4px;
 }
 
 .input-box,
 textarea {
-    width: 100%;
-    background-color: #e0e0e0;
-    border: none;
-    padding: 12px;
-    margin-bottom: 15px;
-    font-size: 14px;
-    resize: none;
+  width: 100%;
+  background-color: #e0e0e0;
+  border: none;
+  padding: 12px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  resize: none;
 }
 
 textarea.large {
-    height: 120px;
+  height: 120px;
 }
 
 textarea.medium {
-    height: 100px;
+  height: 100px;
 }
 
 .upload-box {
-    background-color: #ddd;
-    height: 60px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #777;
-    font-size: 13px;
-    border-radius: 4px;
+  background-color: #ddd;
+  height: 60px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  font-size: 13px;
+  border-radius: 4px;
 }
-
 
 .submit-box {
   display: inline-block;
   border-radius: 4px;
   background-color: #16a34a;
   border: none;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   font-size: 15px;
   padding: 15px;
@@ -574,7 +601,7 @@ textarea.medium {
 }
 
 .submit-box span:after {
-  content: '\00bb';
+  content: "\00bb";
   position: absolute;
   opacity: 0;
   right: -20px;
@@ -592,9 +619,9 @@ textarea.medium {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-    .container {
-        padding: 20px;
-    }
+  .container {
+    padding: 20px;
+  }
 }
 
 form label {
@@ -602,7 +629,8 @@ form label {
   margin-top: 15px;
 }
 
-form input, form textarea {
+form input,
+form textarea {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -613,7 +641,7 @@ form input, form textarea {
   border-radius: 4px;
   background-color: #16a34a;
   border: none;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   font-size: 15px;
   padding: 15px;
@@ -628,7 +656,7 @@ form input, form textarea {
 }
 
 .button span:after {
-  content: '\00bb';
+  content: "\00bb";
   position: absolute;
   opacity: 0;
   right: -20px;
@@ -643,7 +671,6 @@ form input, form textarea {
   opacity: 1;
   right: 0;
 }
-
 
 footer {
   background-color: #16a34a;

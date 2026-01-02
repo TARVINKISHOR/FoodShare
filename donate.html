@@ -23,57 +23,61 @@
         <li><a href="getinvolved.html">Get Involved</a></li>
     </ul>
 
-<div class="container">
-    <div class="content">
 
-        <!-- LEFT SIDE -->
-        <div class="left-panel">
-            <h2>Find Donation Centers</h2>
+    <div class="container">
+        <div class="content">
 
-            <input type="text" class="location-input" placeholder="Enter Your Location">
-            <input type="text" class="location-input" placeholder="City">
+            <!-- LEFT SIDE -->
+            <div class="left-panel">
+                <h2>Find Donation Centers</h2>
 
-            <button class="submit-box" style="vertical-align:middle"><span>Submit your location</span></a></button>
-            <br><br>
-            
-            <div class="section light">Section 1</div>
+                <input type="text" class="location-input" placeholder="Enter Your Location or city">
+                <input type="text" class="location-input" placeholder="City">
 
-            <div class="section">
-                <span class="food-bank-name">Food Bank 1</span><br>
-                Alor Setar, Kedah
-                Lot 2967E, Jalan Sultanah,
-                Taman Aman
-                05350 Alor Setar,
-                Kedah, Malaysia
+                <button type="button" class="submit-box" onclick="searchLocation()"><span>Submit your location</span></button>
                 <br><br>
-                Operation hours :
-                Open : Everyday 9:00 am – 5:00 pm
-                Closed : Public Holiday, Thursday & Sunday
+
+                <div class="section light">Section 1</div>
+
+                <div class="section" data-index="0">
+                    <span class="food-bank-name" onclick="showLocation(0)">Food Bank Malaysia - Alor
+                        Setar</span><br>
+                    Alor Setar, Kedah<br>
+                    Lot 2967E, Jalan Sultanah,<br>
+                    Taman Aman<br>
+                    05350 Alor Setar,<br>
+                    Kedah, Malaysia
+                    <br><br>
+                    Operation hours :<br>
+                    Open : Everyday 9:00 am – 5:00 pm<br>
+                    Closed : Public Holiday, Thursday & Sunday
+                </div>
+
+                <div class="section light">Section 2</div>
+
+                <div class="section" data-index="1">
+                    <span class="food-bank-name" onclick="showLocation(1)">Food Bank Malaysia - Cyberjaya</span><br>
+                    Cyberjaya, Selangor<br>
+                    Persiaran Rimba Permai, Cyber 10,<br>
+                    63000 Cyberjaya, Selangor, Malaysia<br>
+                    (Via appointment only)
+                </div>
             </div>
 
-            <div class="section light">Section 2</div>
-
-            <div class="section">
-                <span class="food-bank-name">Food Bank 2</span><br>
-                Cyberjaya, Selangor
-                Persiaran Rimba Permai, Cyber 10, 63000 Cyberjaya, Selangor, Malaysia
-                (Via appointment only)
+            <!-- RIGHT SIDE -->
+            <div class="right-panel">
+                <div id="map"></div>
             </div>
-        </div>
 
-        <!-- RIGHT SIDE -->
-        <div class="right-panel">
-            Interactive Map
         </div>
-
     </div>
-</div>
 
     <footer>
         &copy; FoodShare | Contact Us: <a href="mailto:s75142@ocean.umt.edu.my">Our Email</a>
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </body>
 
 </html>
