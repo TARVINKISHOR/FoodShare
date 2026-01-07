@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard | FoodShare</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bg.css">
+</head>
+
+<body>
+
+    <div class="container3">
+
+        <!-- ===== ADMIN DASHBOARD VIEW ===== -->
+        <div id="adminDashboard" class="view active">
+            <h1>Admin Dashboard</h1>
+
+            <!-- Summary -->
+            <div>
+                <h3>Total Pledges: <span id="pledgeCount">0</span></h3>
+                <h3>Total Donations: <span id="donationCount">0</span></h3>
+            </div>
+
+            <!-- Donation List -->
+            <h2>Donation List</h2>
+            <table class="table" id="donationTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Items</th>
+                        <th>Address</th>
+                        <th>Donation Place</th>
+                        <th>Date</th>
+                        <th>Edit Location</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <!-- Pledge List -->
+            <h2>Pledges</h2>
+            <table class="table" id="pledgeTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Pledge</th>
+                        <th>Story / Feedback</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <h2>Manage Donation Locations</h2>
+
+            <div class="form-box">
+                <!-- Input for new location -->
+                <div class="form-group">
+                    <input type="text" id="newPlaceName" placeholder="New Donation Place">
+                    <button class="primary" onclick="addDonationPlace()">Add</button>
+                </div>
+
+                <!-- Table of existing donation places -->
+                <table id="donationPlaceTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Place Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be populated dynamically by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+
+            <button class="secondary" onclick="goHome()">Back to Home</button>
+            <button onclick="adminLogout()">Logout</button>
+
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
