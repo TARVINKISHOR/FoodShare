@@ -3,81 +3,66 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>Donate | Reduce Food Waste</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donation</title>
     <link rel="stylesheet" href="bg.css">
 </head>
 
 <body>
-    <ul class="navbar">
-        <li class="logo">
-            <a href="index.html">
-                <img src="Images/Logo.webp" alt="Logo">
-            </a>
-        </li>
-
-        <li><a href="about.html">About</a></li>
-        <li><a href="tips.html">Tips</a></li>
-        <li><a href="recipe.html">Recipes</a></li>
-        <li><a href="donate.html">Donation</a></li>
-        <li><a href="getinvolved.html">Get Involved</a></li>
-    </ul>
-
-
-    <div class="container">
-        <div class="content">
-
-            <!-- LEFT SIDE -->
-            <div class="left-panel">
-                <h2>Find Donation Centers</h2>
-
-                <input type="text" class="location-input" placeholder="Enter Your Location or city">
-                <input type="text" class="location-input" placeholder="City">
-
-                <button type="button" class="submit-box" onclick="searchLocation()"><span>Submit your location</span></button>
-                <br><br>
-
-                <div class="section light">Section 1</div>
-
-                <div class="section" data-index="0">
-                    <span class="food-bank-name" onclick="showLocation(0)">Food Bank Malaysia - Alor
-                        Setar</span><br>
-                    Alor Setar, Kedah<br>
-                    Lot 2967E, Jalan Sultanah,<br>
-                    Taman Aman<br>
-                    05350 Alor Setar,<br>
-                    Kedah, Malaysia
-                    <br><br>
-                    Operation hours :<br>
-                    Open : Everyday 9:00 am – 5:00 pm<br>
-                    Closed : Public Holiday, Thursday & Sunday
-                </div>
-
-                <div class="section light">Section 2</div>
-
-                <div class="section" data-index="1">
-                    <span class="food-bank-name" onclick="showLocation(1)">Food Bank Malaysia - Cyberjaya</span><br>
-                    Cyberjaya, Selangor<br>
-                    Persiaran Rimba Permai, Cyber 10,<br>
-                    63000 Cyberjaya, Selangor, Malaysia<br>
-                    (Via appointment only)
+    <div class="container"> <!-- ===== VIEW 1: CHOICE ===== -->
+        <div id="choice" class="view active">
+            <div class="breadcrumb">Home / Donate</div>
+            <h1>How would you like to help?</h1>
+            <p class="subtitle">Tap an option to continue</p>
+            <div class="choice-grid"> <!-- Donate Food -->
+                <div class="card" onclick="show('food')"> <img
+                        src="https://images.pexels.com/photos/6188334/pexels-photo-6188334.jpeg" alt="Donate Food">
+                    <h2>Donate Food</h2>
+                    <p>Share leftover food and help your community.</p>
+                </div> <!-- Donate Money -->
+                <div class="card" onclick="show('money')"> <img
+                        src="https://images.pexels.com/photos/3184198/pexels-photo-3184198.jpeg" alt="Donate Money">
+                    <h2>Donate Money</h2>
+                    <p>Support food distribution and logistics.</p>
                 </div>
             </div>
-
-            <!-- RIGHT SIDE -->
-            <div class="right-panel">
-                <div id="map"></div>
+        </div> <!-- ===== VIEW 2: FOOD DONATION ===== -->
+        <div id="food" class="view">
+            <div class="breadcrumb">Home / Donate / Food</div>
+            <h1>Donate Food</h1>
+            <p class="subtitle">Step 2 of 3 – Food details</p>
+            <div class="form-box">
+                <div class="form-group"><input placeholder="Food name"></div>
+                <div class="form-group"><input placeholder="Quantity"></div>
+                <div class="form-group"><input placeholder="Pickup location"></div>
+                <div class="impact"> Your food will be shared with local shelters and community kitchens. </div> <button
+                    class="primary" onclick="show('success')">Confirm Food Donation</button> <button class="secondary"
+                    onclick="show('choice')">Back</button>
             </div>
-
+        </div> <!-- ===== VIEW 3: MONEY DONATION ===== -->
+        <div id="money" class="view">
+            <div class="breadcrumb">Home / Donate / Money</div>
+            <h1>Donate Money</h1>
+            <p class="subtitle">Step 2 of 3 – Mock payment</p>
+            <div class="form-box">
+                <div class="form-group"><input placeholder="Donation amount ($)"></div>
+                <div class="form-group"><input placeholder="Card number (mock)"></div>
+                <div class="form-group"><input placeholder="Expiry date (MM/YY)"></div>
+                <div class="impact"> This is a mock payment for demonstration purposes only. </div> <button
+                    class="primary" onclick="show('success')">Confirm Donation</button> <button class="secondary"
+                    onclick="show('choice')">Back</button>
+            </div>
+        </div> <!-- ===== VIEW 4: SUCCESS ===== -->
+        <div id="success" class="view">
+            <div class="success">
+                <h1>Thank You 💚</h1>
+                <p>Your contribution helps reduce food waste and support communities.</p> <button class="primary"
+                    onclick="show('choice')">Donate Again</button>
+            </div>
         </div>
     </div>
-
-    <footer>
-        &copy; FoodShare | Contact Us: <a href="mailto:s75142@ocean.umt.edu.my">Our Email</a>
-    </footer>
-
+    <script> function show(view) { document.querySelectorAll('.view').forEach(v => v.classList.remove('active')); document.getElementById(view).classList.add('active'); } </script>
     <script src="script.js"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </body>
 
 </html>
