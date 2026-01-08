@@ -1,8 +1,6 @@
-/*=========================================================================================================================*/
-
-/*========================================Navigation Bar Active Link Highlighting===========================================*/
-
-/*=========================================================================================================================*/
+/* =========================================================== */
+/* NAVIGATION BAR ACTIVE LINK HIGHLIGHTING */
+/* =========================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".navbar a");
@@ -20,179 +18,28 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/*=========================================================================================================================*/
-
-/*===========================================Recipe Search Functionality==================================================*/
-
-/*=========================================================================================================================*/
+/* =========================================================== */
+/* RECIPE SEARCH FUNCTIONALITY */
+/* =========================================================== */
 
 function searchRecipe() {
   const input = document.getElementById("ingredientSearch").value.toLowerCase();
-
   const recipes = document.querySelectorAll(".recipe-card");
 
   recipes.forEach((recipe) => {
     const ingredients = recipe.getAttribute("data-ingredients");
 
     if (ingredients.includes(input)) {
-      recipe.style.display = "block";
+      recipe.classList.remove("hidden");
     } else {
-      recipe.style.display = "none";
+      recipe.classList.add("hidden");
     }
   });
 }
 
-
-/*=========================================================================================================================*/
-
-/*===================================================Map Initialization====================================================*/
-
-/*=========================================================================================================================*/
-
-let map;
-let markers = [];
-
-// Initialize Leaflet Map (NO API KEY NEEDED!)
-function initMap() {
-  // Create map centered on Malaysia
-  map = L.map("map").setView([4.2105, 101.9758], 7);
-
-  // Add OpenStreetMap tiles (FREE!)
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "© OpenStreetMap contributors",
-    maxZoom: 19,
-    updateWhenZooming: false,
-    updateWhenIdle: true,
-    keepBuffer: 2,
-  }).addTo(map);
-
-  // Add markers for each donation center
-  donationCenters.forEach((center, index) => {
-    // Create custom icon with number
-    const customIcon = L.divIcon({
-      className: "custom-marker",
-      html: `<div style="
-                        background-color: #16a34a;
-                        color: white;
-                        width: 30px;
-                        height: 30px;
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-weight: bold;
-                        border: 3px solid white;
-                        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-                    ">${index + 1}</div>`,
-      iconSize: [30, 30],
-      iconAnchor: [15, 15],
-    });
-
-    // Create marker
-    const marker = L.marker([center.lat, center.lng], {
-      icon: customIcon,
-    }).addTo(map);
-
-    // Create popup content
-    const popupContent = `
-                    <div style="min-width: 200px;">
-                        <h3>${center.name}</h3>
-                        <p><strong>Address:</strong><br>${center.address}</p>
-                        <p><strong>Hours:</strong><br>${center.hours}</p>
-                    </div>
-                `;
-
-    marker.bindPopup(popupContent);
-
-    // When marker is clicked, highlight the section
-    marker.on("click", () => {
-      highlightSection(index);
-    });
-
-    markers.push(marker);
-  });
-
-  setTimeout(() => {
-    map.invalidateSize();
-  }, 100);
-}
-
-// Function called when clicking food bank name
-function showLocation(index) {
-  const center = donationCenters[index];
-
-  // Fly to location with smooth animation
-  map.flyTo([center.lat, center.lng], 15, {
-    duration: 1.5,
-  });
-
-  // Open popup
-  markers[index].openPopup();
-
-  // Highlight the section
-  highlightSection(index);
-
-  // Bounce effect (simple version)
-  const markerElement = markers[index].getElement();
-  if (markerElement) {
-    markerElement.style.animation = "bounce 0.5s ease";
-    setTimeout(() => {
-      markerElement.style.animation = "";
-    }, 500);
-  }
-}
-
-function highlightSection(index) {
-  // Remove highlight from all sections
-  const sections = document.querySelectorAll(".section[data-index]");
-  sections.forEach((section) => section.classList.remove("selected"));
-
-  // Add highlight to selected section
-  sections[index].classList.add("selected");
-}
-
-// Add bounce animation
-const style = document.createElement("style");
-style.textContent = `
-            @keyframes bounce {
-                0%, 100% { transform: translateY(0); }
-                50% { transform: translateY(-10px); }
-            }
-        `;
-document.head.appendChild(style);
-
-// Initialize map when page loads
-window.addEventListener("load", initMap);
-
-function searchLocation() {
-  const query = document.getElementById("locationInput").value.toLowerCase();
-
-  if (!query) return;
-
-  const matchIndex = donationCenters.findIndex(
-    (center) =>
-      center.city.toLowerCase().includes(query) ||
-      center.name.toLowerCase().includes(query)
-  );
-
-  if (matchIndex === -1) {
-    alert("No donation center found for this location.");
-    return;
-  }
-
-  showLocation(matchIndex);
-}
-
-document.addEventListener("DOMContentLoaded", populateDonationPlaces);
-
-/*=========================================================================================================================*/
-
-/*============================================Donation Page View Toggle===================================================*/
-
-/*=========================================================================================================================*/
-
-let foodItems = [];
-let editIndex = -1;
+/* =========================================================== */
+/* DONATION PAGE - VIEW TOGGLE */
+/* =========================================================== */
 
 function show(view) {
   document
@@ -200,23 +47,25 @@ function show(view) {
     .forEach((v) => v.classList.remove("active"));
   document.getElementById(view).classList.add("active");
 }
+
+/* =========================================================== */
+/* DONATION PAGE - FOOD ITEMS MANAGEMENT */
+/* =========================================================== */
+
+let foodItems = [];
+let editIndex = -1;
+
 function addItem() {
   const name = document.getElementById("foodName").value.trim();
   const qty = document.getElementById("foodQty").value.trim();
 
-  // Empty check
+  // Validation
   if (name === "" || qty === "") {
     alert("Food name and quantity are required.");
     return;
   }
 
-  // Quantity must be positive number
-  if (isNaN(qty) || qty <= 0) {
-    alert("Quantity must be a valid number greater than 0.");
-    return;
-  }
-
-  // Duplicate food name check
+  // Check for duplicates
   const duplicate = foodItems.some(
     (item, index) =>
       item.name.toLowerCase() === name.toLowerCase() && index !== editIndex
@@ -242,16 +91,6 @@ function addItem() {
   renderItems();
 }
 
-function validatePostcode() {
-  const postcode = document.getElementById("postcode").value;
-
-  if (postcode.length < 4 || postcode.length > 5) {
-    alert("Please enter a valid postcode.");
-    return false;
-  }
-  return true;
-}
-
 function removeItem(index) {
   foodItems.splice(index, 1);
   renderItems();
@@ -259,6 +98,8 @@ function removeItem(index) {
 
 function renderItems() {
   const list = document.getElementById("itemList");
+  if (!list) return;
+
   list.innerHTML = "";
 
   foodItems.forEach((item, index) => {
@@ -267,19 +108,21 @@ function renderItems() {
     // EDIT MODE
     if (editIndex === index) {
       li.innerHTML = `
-                <input type="text" id="editName" value="${item.name}">
-                <input type="text" id="editQty" value="${item.qty}">
-                <button onclick="saveEdit(${index})">Save</button>
-                <button onclick="cancelEdit()">Cancel</button>
-            `;
+        <input type="text" id="editName" value="${item.name}">
+        <input type="text" id="editQty" value="${item.qty}">
+        <button class="btn-save" onclick="saveEdit(${index})">Save</button>
+        <button class="btn-cancel" onclick="cancelEdit()">Cancel</button>
+      `;
     }
     // NORMAL MODE
     else {
       li.innerHTML = `
-                ${item.name} - ${item.qty}
-                <button onclick="editItem(${index})">Edit</button>
-                <button onclick="removeItem(${index})">Remove</button>
-            `;
+        <span>${item.name} - ${item.qty}</span>
+        <div>
+          <button class="btn-edit" onclick="editItem(${index})">Edit</button>
+          <button class="btn-delete" onclick="removeItem(${index})">Remove</button>
+        </div>
+      `;
     }
 
     list.appendChild(li);
@@ -318,6 +161,18 @@ function confirmFoodDonation() {
     return;
   }
 
+  const address1 = document.getElementById("address1");
+  const address2 = document.getElementById("address2");
+  const city = document.getElementById("city");
+  const state = document.getElementById("state");
+  const postcode = document.getElementById("postcode");
+  const donationPlace = document.getElementById("donationPlace");
+
+  if (!address1 || !city || !state || !postcode || !donationPlace) {
+    alert("Please fill in all required fields");
+    return;
+  }
+
   const donation = {
     items: foodItems,
     address: {
@@ -335,59 +190,76 @@ function confirmFoodDonation() {
   donations.push(donation);
   localStorage.setItem("foodDonations", JSON.stringify(donations));
 
+  // Clear form
   foodItems = [];
   renderItems();
+  address1.value = "";
+  address2.value = "";
+  city.value = "";
+  state.value = "";
+  postcode.value = "";
+
   show("success");
 }
 
-// Load donation places from localStorage or default list
+/* =========================================================== */
+/* DONATION PLACES MANAGEMENT */
+/* =========================================================== */
+
 let donationPlaces = JSON.parse(
   localStorage.getItem("donationPlaces") ||
     '["Community Center A","Shelter B","Food Bank C"]'
 );
 
-function renderDonationPlaces() {
-  const tbody = document
-    .getElementById("donationPlaceTable")
-    .querySelector("tbody");
-  tbody.innerHTML = "";
-  donationPlaces.forEach((place, index) => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${place}</td>
-            <td>
-                <button onclick="editDonationPlace(${index})">Edit</button>
-                <button onclick="removeDonationPlace(${index})">Remove</button>
-            </td>
-        `;
-    tbody.appendChild(row);
-  });
-
-  // Also update the dropdown in donation form
+function populateDonationPlaces() {
   const select = document.getElementById("donationPlace");
   if (select) {
     select.innerHTML = donationPlaces
-      .map((p) => `<option>${p}</option>`)
+      .map((p) => `<option value="${p}">${p}</option>`)
       .join("");
   }
 }
 
-// Add new donation place
+function renderDonationPlaces() {
+  const table = document.getElementById("donationPlaceTable");
+  if (!table) return;
+
+  const tbody = table.querySelector("tbody");
+  tbody.innerHTML = "";
+
+  donationPlaces.forEach((place, index) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${place}</td>
+      <td>
+        <button class="btn-edit" onclick="editDonationPlace(${index})">Edit</button>
+        <button class="btn-delete" onclick="removeDonationPlace(${index})">Remove</button>
+      </td>
+    `;
+    tbody.appendChild(row);
+  });
+
+  // Update dropdown
+  populateDonationPlaces();
+}
+
 function addDonationPlace() {
   const input = document.getElementById("newPlaceName");
+  if (!input) return;
+
   const place = input.value.trim();
   if (!place) {
     alert("Please enter a place name");
     return;
   }
+
   donationPlaces.push(place);
   localStorage.setItem("donationPlaces", JSON.stringify(donationPlaces));
   input.value = "";
   renderDonationPlaces();
 }
 
-// Edit existing donation place
 function editDonationPlace(index) {
   const newPlace = prompt(
     "Enter new donation place name:",
@@ -400,7 +272,6 @@ function editDonationPlace(index) {
   }
 }
 
-// Remove donation place
 function removeDonationPlace(index) {
   if (confirm("Are you sure you want to remove this place?")) {
     donationPlaces.splice(index, 1);
@@ -409,30 +280,22 @@ function removeDonationPlace(index) {
   }
 }
 
-// Initialize table on page load
-window.addEventListener("load", renderDonationPlaces);
-
-// Call on page load
-populateDonationPlaces();
-/*=====================================================================================================================*/
-
-/*===================================================== ADMIN LOGIN =====================================================*/
-
-/*=====================================================================================================================*/
-
-// Show login on shortcut
-document.addEventListener("keydown", (event) => {
-  if (event.ctrlKey && event.shiftKey && event.code === "KeyA") {
-    const adminDiv = document.getElementById("adminLogin");
-    if (adminDiv) adminDiv.style.display = "block";
-  }
+// Initialize on page load
+window.addEventListener("load", () => {
+  populateDonationPlaces();
+  renderDonationPlaces();
 });
 
-// Hide admin login
-function hideAdminLogin() {
-  const adminDiv = document.getElementById("adminLogin");
-  if (adminDiv) adminDiv.style.display = "none";
-}
+/* =========================================================== */
+/* ADMIN LOGIN */
+/* =========================================================== */
+
+// Show login on keyboard shortcut (Ctrl+Shift+A)
+document.addEventListener("keydown", (event) => {
+  if (event.ctrlKey && event.shiftKey && event.code === "KeyA") {
+    window.location.href = "adminLogin.html";
+  }
+});
 
 const ADMIN_USER = "admin";
 const ADMIN_PASS = "1234";
@@ -447,100 +310,174 @@ function adminLogin() {
   }
 
   if (username === ADMIN_USER && password === ADMIN_PASS) {
-    // set session flag
     localStorage.setItem("isAdminLoggedIn", "true");
     alert("Login successful!");
-    window.location.href = "adminDashboard.html"; // redirect to dashboard
+    window.location.href = "adminDashboard.html";
   } else {
     alert("Invalid username or password");
   }
 }
 
-/*=========================================================================================================================*/
+function adminLogout() {
+  localStorage.removeItem("isAdminLoggedIn");
+  alert("You have been logged out");
+  window.location.href = "index.html";
+}
 
-/*================================================== Admin Dashboard View ==================================================*/
+/* =========================================================== */
+/* ADMIN DASHBOARD */
+/* =========================================================== */
 
-/*=========================================================================================================================*/
+// Check admin session on dashboard page
+if (window.location.pathname.includes("adminDashboard.html")) {
+  if (localStorage.getItem("isAdminLoggedIn") !== "true") {
+    alert("You must log in as admin to access this page.");
+    window.location.href = "index.html";
+  }
+}
 
-// --- Sample data retrieval from localStorage ---
-let donations = JSON.parse(localStorage.getItem("foodDonations") || "[]");
-let pledges = JSON.parse(localStorage.getItem("pledges") || "[]");
+// Load and render admin data
+window.addEventListener("load", () => {
+  // Only run on admin dashboard
+  if (!window.location.pathname.includes("adminDashboard.html")) return;
 
-// Update summary counts
-document.getElementById("pledgeCount").innerText = pledges.length;
-document.getElementById("donationCount").innerText = donations.length;
+  let donations = JSON.parse(localStorage.getItem("foodDonations") || "[]");
+  let pledges = JSON.parse(localStorage.getItem("pledges") || "[]");
 
-// Populate donation table
+  // Update counts
+  const pledgeCount = document.getElementById("pledgeCount");
+  const donationCount = document.getElementById("donationCount");
+
+  if (pledgeCount) pledgeCount.innerText = pledges.length;
+  if (donationCount) donationCount.innerText = donations.length;
+
+  // Render tables
+  renderDonations();
+  renderPledges();
+});
+
 function renderDonations() {
-  const tbody = document.getElementById("donationTable").querySelector("tbody");
+  const table = document.getElementById("donationTable");
+  if (!table) return;
+
+  const tbody = table.querySelector("tbody");
+  const donations = JSON.parse(localStorage.getItem("foodDonations") || "[]");
+
   tbody.innerHTML = "";
   donations.forEach((d, index) => {
     const itemsList = d.items.map((i) => `${i.name} (${i.qty})`).join(", ");
-    const address = `${d.address.address1}, ${d.address.address2}, ${d.address.city}, ${d.address.state}, ${d.address.postcode}`;
+    const address = `${d.address.address1}, ${d.address.city}, ${d.address.state} ${d.address.postcode}`;
     const row = document.createElement("tr");
     row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${itemsList}</td>
-            <td>${address}</td>
-            <td>
-                <span id="place-${index}">${d.place}</span>
-                <button onclick="editPlace(${index})">Edit</button>
-            </td>
-            <td>${d.date}</td>
-        `;
+      <td>${index + 1}</td>
+      <td>${itemsList}</td>
+      <td>${address}</td>
+      <td>
+        <span id="place-${index}">${d.place}</span>
+        <button class="btn-edit" onclick="editPlace(${index})">Edit</button>
+      </td>
+      <td>${d.date}</td>
+    `;
     tbody.appendChild(row);
   });
 }
 
-// Edit donation place
 function editPlace(index) {
+  let donations = JSON.parse(localStorage.getItem("foodDonations") || "[]");
   const current = donations[index].place;
   const newPlace = prompt("Enter new donation location:", current);
+
   if (newPlace && newPlace.trim() !== "") {
     donations[index].place = newPlace;
-
-    // Save donations
     localStorage.setItem("foodDonations", JSON.stringify(donations));
 
-    // Update global donation places list
     if (!donationPlaces.includes(newPlace)) {
       donationPlaces.push(newPlace);
       localStorage.setItem("donationPlaces", JSON.stringify(donationPlaces));
     }
 
-    // Re-render donations table
     renderDonations();
+    renderDonationPlaces();
   }
 }
 
-// Populate pledge table
 function renderPledges() {
-  const tbody = document.getElementById("pledgeTable").querySelector("tbody");
+  const table = document.getElementById("pledgeTable");
+  if (!table) return;
+
+  const tbody = table.querySelector("tbody");
+  const pledges = JSON.parse(localStorage.getItem("pledges") || "[]");
+
   tbody.innerHTML = "";
   pledges.forEach((p, index) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${p.name}</td>
-            <td>${p.email}</td>
-            <td>${p.pledge}</td>
-            <td>${p.story || p.feedback || ""}</td>
-        `;
+      <td>${index + 1}</td>
+      <td>${p.name}</td>
+      <td>${p.email}</td>
+      <td>${p.pledge}</td>
+      <td>${p.story || ""}</td>
+      <td>${p.feedback || ""}</td>
+    `;
     tbody.appendChild(row);
   });
 }
 
-// Go back to home (replace with your home page redirect if needed)
 function goHome() {
   window.location.href = "index.html";
 }
 
-// Initial render
-renderDonations();
-renderPledges();
+function showPaymentMethod(method) {
+  // Remove active class from all buttons and forms
+  document
+    .querySelectorAll(".payment-btn")
+    .forEach((btn) => btn.classList.remove("active"));
+  document
+    .querySelectorAll(".payment-form")
+    .forEach((form) => form.classList.remove("active"));
 
-// Check admin session on page load
-if (localStorage.getItem("isAdminLoggedIn") !== "true") {
-  alert("You must log in as admin to access this page.");
-  window.location.href = "index.html"; // redirect home
+  // Add active class to selected button and form
+  event.target.closest(".payment-btn").classList.add("active");
+  document.getElementById(method).classList.add("active");
+}
+
+/* =========================================================== */
+/* GET INVOLVED - FORM VALIDATION & SUBMISSION */
+/* =========================================================== */
+
+function validateForm(event) {
+  event.preventDefault();
+
+  const pledge = document.getElementById("pledgeSelect").value;
+  const name = document.getElementById("userName").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const story = document.getElementById("userStory").value.trim();
+  const feedback = document.getElementById("userFeedback").value.trim();
+
+  if (!pledge || !name || !email || !story || !feedback) {
+    alert("Please fill in all required fields");
+    return false;
+  }
+
+  // Save to localStorage
+  const pledgeData = {
+    pledge: pledge,
+    name: name,
+    email: email,
+    story: story,
+    feedback: feedback,
+    date: new Date().toLocaleDateString(),
+  };
+
+  let pledges = JSON.parse(localStorage.getItem("pledges") || "[]");
+  pledges.push(pledgeData);
+  localStorage.setItem("pledges", JSON.stringify(pledges));
+
+  // Show success message
+  alert("Thank you for your pledge! Your commitment has been saved.");
+
+  // Clear form
+  document.getElementById("pledgeForm").reset();
+
+  return false;
 }

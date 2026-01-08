@@ -14,7 +14,7 @@
     <ul class="navbar">
         <li class="logo">
             <a href="index.html">
-                <img src="Images/Logo.webp" alt="Logo">
+                <img src="Images/Logo.webp" alt="FoodShare Logo">
             </a>
         </li>
         <li><a href="about.html">About</a></li>
@@ -64,8 +64,7 @@
                     <input type="text" id="foodQty" placeholder="e.g. 5kg / 10 packs" required>
                 </div>
 
-                <button class="primary" onclick="addItem()">Add Item</button>
-
+                <button class="btn-add" onclick="addItem()">Add Item</button>
 
                 <!-- FOOD ITEMS LIST -->
                 <ul id="itemList" style="margin-top:15px;"></ul>
@@ -86,7 +85,6 @@
                     <label>Donate To</label>
                     <select id="donationPlace">
                         <!-- Options populated dynamically -->
-                         
                     </select>
                 </div>
 
@@ -94,7 +92,7 @@
                     Your food will be shared with local shelters and community kitchens.
                 </div>
 
-               <button class="primary" onclick="confirmFoodDonation()">Confirm Food Donation</button>
+                <button class="primary" onclick="confirmFoodDonation()">Confirm Food Donation</button>
 
                 <button class="secondary" onclick="show('choice')">Back</button>
             </div>
@@ -105,12 +103,79 @@
             <h1>Donate Money</h1>
 
             <div class="form-box">
-                <div class="form-group"><input placeholder="Donation amount ($)"></div>
-                <div class="form-group"><input placeholder="Card number (mock)"></div>
-                <div class="form-group"><input placeholder="Expiry date (MM/YY)"></div>
+                <h3>Choose Payment Method</h3>
+                
+                <div class="payment-methods">
+                    <button class="payment-btn active" onclick="showPaymentMethod('online-banking')">
+                        <span style="font-size: 24px;">🏦</span><br>
+                        Online Banking
+                    </button>
+                    <button class="payment-btn" onclick="showPaymentMethod('card')">
+                        <span style="font-size: 24px;">💳</span><br>
+                        Credit/Debit Card
+                    </button>
+                </div>
+
+                <!-- ONLINE BANKING FORM -->
+                <div id="online-banking" class="payment-form active">
+                    <h4>Online Banking Payment</h4>
+                    <div class="form-group">
+                        <label>Donation Amount (RM)</label>
+                        <input type="number" id="bankAmount" placeholder="Enter amount" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Select Your Bank</label>
+                        <select id="bankSelect">
+                            <option value="">-- Choose Bank --</option>
+                            <option value="Maybank">Maybank</option>
+                            <option value="CIMB Bank">CIMB Bank</option>
+                            <option value="Public Bank">Public Bank</option>
+                            <option value="RHB Bank">RHB Bank</option>
+                            <option value="Hong Leong Bank">Hong Leong Bank</option>
+                            <option value="AmBank">AmBank</option>
+                            <option value="Bank Islam">Bank Islam</option>
+                            <option value="Bank Rakyat">Bank Rakyat</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Account Number (Mock)</label>
+                        <input type="text" id="bankAccount" placeholder="Enter account number">
+                    </div>
+                    <div class="form-group">
+                        <label>6-Digit PIN (Mock)</label>
+                        <input type="password" id="bankPin" placeholder="Enter 6-digit PIN" maxlength="6">
+                    </div>
+                </div>
+
+                <!-- CARD PAYMENT FORM -->
+                <div id="card" class="payment-form">
+                    <h4>Card Payment</h4>
+                    <div class="form-group">
+                        <label>Donation Amount (RM)</label>
+                        <input type="number" id="cardAmount" placeholder="Enter amount" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Card Number (Mock)</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                    </div>
+                    <div class="form-group">
+                        <label>Cardholder Name</label>
+                        <input type="text" id="cardName" placeholder="Name on card">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group" style="flex: 1;">
+                            <label>Expiry Date (MM/YY)</label>
+                            <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+                        </div>
+                        <div class="form-group" style="flex: 1; margin-left: 10px;">
+                            <label>CVV</label>
+                            <input type="text" id="cardCvv" placeholder="123" maxlength="3">
+                        </div>
+                    </div>
+                </div>
 
                 <div class="impact">
-                    This is a mock payment for demonstration purposes only.
+                    This is a mock payment for demonstration purposes only. No actual transaction will occur.
                 </div>
 
                 <button class="primary" onclick="show('success')">Confirm Donation</button>
@@ -134,7 +199,9 @@
         <a href="mailto:s75142@ocean.umt.edu.my">Our Email</a>
     </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
+
 
 </body>
+
 </html>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Get Involved</title>
-  <link rel="stylesheet" href="bg.css">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Get Involved | FoodShare</title>
+    <link rel="stylesheet" href="bg.css">
 </head>
 
 <body>
@@ -15,7 +15,6 @@
                 <img src="Images/Logo.webp" alt="Logo">
             </a>
         </li>
-
         <li><a href="about.html">About</a></li>
         <li><a href="tips.html">Tips</a></li>
         <li><a href="recipe.html">Recipes</a></li>
@@ -25,33 +24,52 @@
 
     <div class="container">
         <h2>Take the FoodShare Pledge</h2>
+        <p style="text-align: center; margin-bottom: 30px; color: #666;">
+            Join our community in the fight against food waste. Make your commitment today!
+        </p>
 
-        <form onsubmit="return validateForm()">
+        <form id="pledgeForm" onsubmit="return validateForm(event)">
 
-            <label>Pledge</label>
-            <textarea rows="5" required></textarea>
+            <label>Choose Your Pledge *</label>
+            <select id="pledgeSelect" required>
+                <option value="">-- Select a pledge --</option>
+                <option value="Reduce food waste at home">I pledge to reduce food waste at home</option>
+                <option value="Donate surplus food regularly">I pledge to donate surplus food regularly</option>
+                <option value="Compost organic waste">I pledge to compost my organic waste</option>
+                <option value="Plan meals to minimize waste">I pledge to plan meals to minimize waste</option>
+                <option value="Educate others about food waste">I pledge to educate others about food waste</option>
+                <option value="Shop mindfully">I pledge to shop mindfully and buy only what I need</option>
+                <option value="Support food rescue organizations">I pledge to support food rescue organizations</option>
+            </select>
 
-            <label>Name</label>
-            <input type="text" placeholder="Enter name" required>
+            <label>Full Name *</label>
+            <input type="text" id="userName" placeholder="Enter your name" required>
 
-            <label>Email</label>
-            <input type="email" id="email" placeholder="Enter email" required>
+            <label>Email Address *</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
 
-            <label>Your story</label>
-            <textarea rows="5" required></textarea>
+            <label>Your Story *</label>
+            <textarea id="userStory" rows="5"
+                placeholder="Tell us why you're taking this pledge and how you plan to make a difference..."
+                required></textarea>
 
+            <label>Upload Your Photo (Optional)</label>
+            <button type="button" class="button" style="vertical-align:middle"
+                onclick="window.open('https://example.com', '_blank')">
+                <span>Upload your image here</span>
+            </button>
             <br><br>
 
-        <button class="button"style="vertical-align:middle"><span><a href="https://example.com" target="_blank">Upload your image here</span></a></button>
-        <br><br> 
-
-            <label>Feedback & Suggestion</label>
-            <textarea rows="5" required></textarea>            
+            <label>Feedback & Suggestions *</label>
+            <textarea id="userFeedback" rows="5"
+                placeholder="Share your thoughts on how we can improve our platform or any suggestions..."
+                required></textarea>
             <br>
-            
-        <button class="submit-box" style="vertical-align:middle"><span>Submit your pledge</span></a></button>
+
+            <button type="submit" class="submit-box">
+                <span>Submit Your Pledge</span>
+            </button>
         </form>
-        </div>
     </div>
 
     <footer>

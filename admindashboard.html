@@ -17,9 +17,15 @@
             <h1>Admin Dashboard</h1>
 
             <!-- Summary -->
-            <div>
-                <h3>Total Pledges: <span id="pledgeCount">0</span></h3>
-                <h3>Total Donations: <span id="donationCount">0</span></h3>
+            <div style="display: flex; gap: 30px; margin: 30px 0; flex-wrap: wrap;">
+                <div style="background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%); color: white; padding: 25px; border-radius: 15px; flex: 1; min-width: 200px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <h3 style="margin: 0; color: white;">Total Pledges</h3>
+                    <p style="font-size: 2.5rem; font-weight: bold; margin: 10px 0 0 0;"><span id="pledgeCount">0</span></p>
+                </div>
+                <div style="background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%); color: white; padding: 25px; border-radius: 15px; flex: 1; min-width: 200px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <h3 style="margin: 0; color: white;">Total Donations</h3>
+                    <p style="font-size: 2.5rem; font-weight: bold; margin: 10px 0 0 0;"><span id="donationCount">0</span></p>
+                </div>
             </div>
 
             <!-- Donation List -->
@@ -32,7 +38,6 @@
                         <th>Address</th>
                         <th>Donation Place</th>
                         <th>Date</th>
-                        <th>Edit Location</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -47,7 +52,8 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Pledge</th>
-                        <th>Story / Feedback</th>
+                        <th>Story</th>
+                        <th>Feedback</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -57,9 +63,9 @@
 
             <div class="form-box">
                 <!-- Input for new location -->
-                <div class="form-group">
-                    <input type="text" id="newPlaceName" placeholder="New Donation Place">
-                    <button class="primary" onclick="addDonationPlace()">Add</button>
+                <div class="form-group" style="display: flex; gap: 10px;">
+                    <input type="text" id="newPlaceName" placeholder="New Donation Place" style="flex: 1;">
+                    <button class="btn-add" onclick="addDonationPlace()">Add Location</button>
                 </div>
 
                 <!-- Table of existing donation places -->
@@ -77,10 +83,10 @@
                 </table>
             </div>
 
-
-            <button class="secondary" onclick="goHome()">Back to Home</button>
-            <button onclick="adminLogout()">Logout</button>
-
+            <div style="margin-top: 30px; display: flex; gap: 10px;">
+                <button class="secondary" onclick="goHome()">Back to Home</button>
+                <button class="btn-delete" onclick="adminLogout()">Logout</button>
+            </div>
 
         </div>
 

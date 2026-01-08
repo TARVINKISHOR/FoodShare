@@ -1,540 +1,523 @@
-body {
-  margin: 0px;
-  padding: 0px;
-}
+/* =============================================== */
+/* GLOBAL RESET & BASE STYLES */
+/* =============================================== */
 
-/*=======================================================================================================================*/
-
-/*===========================================Index Page Styles========================================================== */
-
-/*=======================================================================================================================*/
-
-/*Title Style*/
-.title {
-  color: green;
-  font-size: 64px;
-  font-weight: 700;
-  font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-align: center;
-  margin-top: 0px;
-  padding-top: 80px;
-}
-
-/*Subtitle Style*/
-.sub_title {
-  color: green;
-  font-size: 28px;
-  font-weight: 400;
-  font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  text-align: center;
-  margin-top: 20px;
-}
-
-/* Navbar Style */
-.navbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(21, 163, 73);
-  padding: 15px 20px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  overflow: hidden;
-  font-size: 16px; /* Even larger */
-  font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.navbar a.active {
-  background-color: rgb(132, 255, 204);
-  color: white;
-}
-
-.logo img {
-  height: 50px; /* Adjust logo size */
-  width: auto; /* Keeps aspect ratio */
-  cursor: pointer; /* Optional: makes it clickable */
-}
-
-/*=======================================================================================================================*/
-
-/* ================================================== ADMIN LOGIN PAGE ================================================= */
-
-/*=======================================================================================================================*/
-
-#adminLoginBtn {
-  display: none; /* Hidden by default */
-  margin-top: 20px;
-  padding: 12px 20px;
-  background: #2e7d32;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.login-popup {
-  display: none;
-  background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  margin: 30px auto 0 auto;
-  text-align: left;
-}
-
-.login-popup input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.login-popup button {
-  width: 100%;
-  padding: 10px;
-  background: #2e7d32;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.error-msg {
-  color: red;
-  margin-top: 5px;
-  font-size: 14px;
-}
-
-.view {
-  display: none;
-  animation: fade 0.4s ease;
-}
-
-.view.active {
-  display: block;
-}
-
-/*=======================================================================================================================*/
-
-/*=================================================Navbar Styles=========================================================*/
-
-/*=======================================================================================================================*/
-
-.navbar {
+* {
   margin: 0;
-}
-
-.navbar ul {
-  display: flex; /* Make the list items align in a row */
-  list-style: none; /* Remove bullet points */
   padding: 0;
-  gap: 20px; /* Space between items */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
+  min-height: 100vh;
+  color: #2b2b2b;
+  line-height: 1.6;
+}
+
+/* =============================================== */
+/* NAVBAR STYLES */
+/* =============================================== */
+
+.navbar {
+  list-style: none;
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  flex-wrap: wrap;
+  gap: 10px;
   margin: 0;
+}
+
+.navbar .logo {
+  margin-right: auto;
+}
+
+.navbar .logo img {
+  height: 50px;
+  width: auto;
+  cursor: pointer;
 }
 
 .navbar li {
-  text-decoration: none;
   list-style: none;
-  float: left;
-  align-content: center;
 }
 
 .navbar li a {
-  text-decoration: none;
   color: white;
-  margin-left: 10px;
-  font-size: 12px;
-  padding: 10px;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 15px;
 }
 
-.navbar li a:hover {
-  background-color: rgb(132, 255, 204);
+.navbar li a:hover,
+.navbar li a.active {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
-/* Hero Section- Home page section */
+/* =============================================== */
+/* PAGE TITLES */
+/* =============================================== */
+
+.page-title {
+  text-align: center;
+  margin: 40px 20px 30px;
+  color: #2e7d32;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+h1 {
+  color: #2e7d32;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #2e7d32;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+h3 {
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+/* =============================================== */
+/* HERO SECTION - HOME PAGE */
+/* =============================================== */
+
 .hero {
   background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
+  margin: 0;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #1f2937;
   margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 .hero p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #4b5563;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .hero-buttons {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
 
-/* Button Styles- Home Styles */
+/* =============================================== */
+/* BUTTON STYLES */
+/* =============================================== */
+
 .btn {
-  padding: 0.75rem 2rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
+  padding: 0.9rem 2.5rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
-}
-
-.btn-primary {
-  background-color: #16a34a;
-  color: white;
   border: none;
 }
 
+.btn-primary {
+  background-color: #2e7d32;
+  color: white;
+}
+
 .btn-primary:hover {
-  background-color: #15803d;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #1b5e20;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
 }
 
 .btn-secondary {
   background-color: white;
-  color: #16a34a;
-  border: 2px solid #16a34a;
+  color: #2e7d32;
+  border: 2px solid #2e7d32;
 }
 
 .btn-secondary:hover {
   background-color: #f0fdf4;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.2);
+}
+
+button.primary {
+  background: #2e7d32;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+}
+
+button.primary:hover {
+  background: #1b5e20;
   transform: translateY(-2px);
 }
 
-/* Features Section- Home page section */
+button.secondary {
+  background: #666;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+button.secondary:hover {
+  background: #555;
+  transform: translateY(-2px);
+}
+
+/* =============================================== */
+/* COLORED ACTION BUTTONS */
+/* =============================================== */
+
+/* Add Button - Green */
+.btn-add {
+  background: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-add:hover {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* Edit Button - Blue */
+.btn-edit {
+  background: #007bff;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-edit:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+/* Delete/Remove Button - Red */
+.btn-delete {
+  background: #dc3545;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+/* Save Button - Green */
+.btn-save {
+  background: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-save:hover {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* Cancel Button - Gray */
+.btn-cancel {
+  background: #6c757d;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+}
+
+/* =============================================== */
+/* FEATURES SECTION - HOME PAGE */
+/* =============================================== */
+
 .features {
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
   margin-top: 2rem;
-}
-
-.features-card {
-  border: 2px dashed #d1d5db;
-  padding: 2rem;
-  text-align: center;
-  border-radius: 0.5rem;
-  transition: all 0.3s;
-}
-
-.feature-card:hover {
-  border-color: #16a34a;
-  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.1);
-  transform: translateY(-5px);
-}
-
-.feature-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.feature-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-  color: #1f2937;
-}
-
-.feature-card p {
-  color: #6b7280;
-  font-size: 0.95rem;
 }
 
 .features a {
   text-decoration: none;
+  color: inherit;
 }
 
-/*====================================================================================================================== */
+.feature-card {
+  background: white;
+  border: 2px solid #e5e7eb;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
 
-/*========================================= Admin Dashboard Styles ===================================================== */
+.feature-card:hover {
+  border-color: #2e7d32;
+  box-shadow: 0 8px 25px rgba(46, 125, 50, 0.15);
+  transform: translateY(-8px);
+}
 
-/*======================================================================================================================*/
+.feature-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
 
-/* Admin dashboard styling */
-.container3 {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 20px;
+.feature-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #2e7d32;
 }
-h1,
-h2,
-h3 {
-  margin-bottom: 15px;
+
+.feature-card p {
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1.6;
 }
-.view {
-  display: none;
+
+/* =============================================== */
+/* RECIPE PAGE STYLES */
+/* =============================================== */
+
+.search-box {
+  text-align: center;
+  margin: 0 20px 40px;
 }
-.view.active {
-  display: block;
-}
-.table {
+
+.search-box input {
   width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 30px;
-}
-.table th,
-.table td {
-  padding: 10px;
-  border: 1px solid #ccc;
-  text-align: left;
-}
-button {
-  padding: 8px 14px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.primary {
-  background: var(--green-dark);
-  color: white;
-  margin-right: 5px;
-}
-.secondary {
-  background: #666;
-  color: white;
-}
-input[type="text"],
-select {
-  padding: 6px;
-  width: 90%;
+  max-width: 600px;
+  padding: 15px 25px;
+  font-size: 16px;
+  border-radius: 30px;
+  border: 2px solid #ddd;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
-/*====================================================================================================================== */
-
-/*========================================= ABOUT PAGE STYLES ========================================================== */
-
-/*=======================================================================================================================*/
-
-/* About page styling */
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.search-box input:focus {
+  outline: none;
+  border-color: #2e7d32;
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.2);
 }
 
-/* About section styling */
-.about-section {
-  margin-bottom: 20px;
-}
-
-/* Heading styles */
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #1e3a2e; /* Dark green */
-  text-align: center;
-}
-
-h3 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-  color: #27ae60; /* Medium green */
-  border-bottom: 2px solid #27ae60;
-  padding-bottom: 5px;
-}
-
-/* About tips and facts styling */
-.about-tips,
-.about-facts {
-  margin-bottom: 20px;
-  padding: 15px;
-  background-color: #d5f4e6; /* Light green background */
-  border-left: 5px solid #27ae60;
-  border-radius: 4px;
-}
-
-/* Paragraph styling */
-p {
-  margin-bottom: 10px;
-}
-
-/* List styling */
-ul {
-  list-style-type: disc;
-  margin-left: 20px;
-}
-
-li {
-  margin-bottom: 5px;
-}
-
-strong {
-  color: #1e3a2e; /* Dark green for emphasis */
-}
-
-/*=======================================================================================================================*/
-
-/* ============================================ RECIPE SECTION ========================================================== */
-
-/*=======================================================================================================================*/
-
-/* Recipe section */
-.recipe-section h1 {
-  text-align: center;
-  margin-bottom: 40px;
-  color: rgb(21, 163, 73);
-}
-
-/* Recipe cards */
-.recipe-card {
-  background-color: #ffffff;
-  padding: 25px;
-  margin-bottom: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-}
-
-/* ===== RECIPE GRID ===== */
 .recipe-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 0 20px;
+  max-width: 1400px;
+  margin: 0 auto 100px;
 }
 
-/* ===== CLICKABLE RECIPE CARD ===== */
 .recipe-card {
-  background-color: #fff;
-  padding: 18px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-  cursor: pointer;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-/* Remove default arrow */
+.recipe-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.recipe-card.hidden {
+  display: none;
+}
+
 .recipe-card summary {
-  list-style: none;
-  font-size: 18px;
-  font-weight: bold;
-  color: rgb(21, 163, 73);
   cursor: pointer;
+  padding: 25px;
+  list-style: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #2e7d32;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  transition: all 0.3s ease;
+  user-select: none;
 }
 
-/* Hide default marker */
 .recipe-card summary::-webkit-details-marker {
   display: none;
 }
 
-/* Hover effect */
-.recipe-card:hover {
-  transform: translateY(-3px);
-  transition: 0.2s ease;
+.recipe-card summary:hover {
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
 }
 
-/* Expanded content */
+.recipe-content {
+  padding: 25px;
+}
+
+.recipe-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
 .recipe-card p {
-  margin-top: 12px;
+  font-weight: bold;
+  color: #333;
+  margin: 20px 0 10px;
+  font-size: 1.1rem;
 }
 
 .recipe-card ul,
 .recipe-card ol {
   margin-left: 20px;
-  margin-top: 8px;
+  color: #555;
 }
 
 .recipe-card li {
-  margin-bottom: 6px;
+  margin-bottom: 10px;
+  line-height: 1.7;
 }
 
-/* Search box styling */
+/* =============================================== */
+/* TIPS PAGE STYLES */
+/* =============================================== */
 
-.search-box {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.search-box input {
-  width: 100%;
-  max-width: 400px;
-  padding: 12px 15px;
-  font-size: 14px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-/*=======================================================================================================================*/
-
-/* ============================================ TIPS SECTION =========================================================== */
-
-/*=======================================================================================================================*/
-
-/*Tips section*/
 .tips-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 50px;
-  padding-bottom: 200px;
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto 100px;
 }
 
-/*Tips bar*/
 .tips-card {
-  background-color: #d5f4e6;
-  border-radius: 20px 20px;
-  border-right: 4px solid #77c092;
-  display: flex;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background: white;
+  border-radius: 15px;
+  border-left: 5px solid #2e7d32;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-/*Tips content*/
+.tips-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
 .tips-content {
-  padding: 25px;
+  padding: 30px;
 }
 
-/*Tips h3*/
 .tips-content h3 {
-  display: grid;
-  grid-template-columns: minmax(50px), 1fr;
-  background-color: #17a12e;
-  border: 2px solid white;
-  border-radius: 20px 20px;
-  color: #fbfbfb;
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
   margin-bottom: 20px;
-  margin-left: 10px;
-  padding: 10px 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
 }
 
-/* Responsive design */
-@media (max-width: 600px) {
-  .container {
-    padding: 10px;
-  }
-  h1 {
-    font-size: 2em;
-  }
-  h3 {
-    font-size: 1.3em;
-  }
+.tips-content ul {
+  list-style: none;
+  padding-left: 0;
 }
 
-/*=======================================================================================================================*/
+.tips-content li {
+  padding: 10px 0;
+  padding-left: 30px;
+  position: relative;
+  color: #555;
+  line-height: 1.6;
+}
 
-/*===========================================DONATION PAGE STYLES========================================================*/
+.tips-content li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
 
-/*=======================================================================================================================*/
+/* =============================================== */
+/* DONATION PAGE STYLES */
+/* =============================================== */
 
 :root {
   --green-dark: #2e7d32;
@@ -545,397 +528,482 @@ strong {
 
 .container2 {
   max-width: 1100px;
-  margin: 60px auto;
+  margin: 60px auto 100px;
   padding: 20px;
-}
-
-.breadcrumb {
-  color: #777;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-h1 {
-  margin-bottom: 8px;
-}
-
-.subtitle {
-  color: #555;
-  margin-bottom: 30px;
 }
 
 .view {
   display: none;
-  animation: fade 0.4s ease;
+  animation: fadeIn 0.4s ease;
 }
 
 .view.active {
   display: block;
 }
 
-@keyframes fade {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* ===== McDonald's-style Choice Cards ===== */
 .choice-grid {
   display: flex;
-  gap: 30px;
+  gap: 40px;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 30px;
 }
 
 .card {
   background: white;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  flex: 0 0 300px;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  flex: 0 0 320px;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.3s ease;
 }
 
 .card img {
-  width: 300px;
-  height: 199.863px;
-  border-radius: 14px;
-  margin-bottom: 15px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 20px;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 .card h2 {
-  margin-top: 0;
+  color: #2e7d32;
+  margin: 15px 0 10px;
 }
 
 .card p {
-  color: #555;
+  color: #666;
+  line-height: 1.6;
 }
 
-/* ===== Forms ===== */
 .form-box {
-  max-width: 500px;
+  max-width: 600px;
   background: white;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  margin: 0 auto;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  margin: 30px auto;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-input {
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
   width: 100%;
-  padding: 12px;
+  padding: 12px 15px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-button {
-  padding: 14px 22px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  font-size: 15px;
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
 }
 
-.primary {
-  background: var(--green-dark);
-  color: white;
-  margin-right: 10px;
+.form-row {
+  display: flex;
+  gap: 10px;
 }
 
-.secondary {
-  background: #666;
-  color: white;
+#itemList {
+  list-style: none;
+  padding: 0;
 }
 
-/* ===== Impact box ===== */
+#itemList li {
+  background: #f8f9fa;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#itemList button {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  margin-left: 5px;
+}
+
 .impact {
   background: var(--green-light);
-  padding: 15px;
-  border-radius: 10px;
-  margin: 20px 0;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 25px 0;
   color: var(--green-dark);
+  text-align: center;
+  font-weight: 500;
 }
 
-/* ===== Success ===== */
 .success {
   text-align: center;
   background: var(--green-light);
-  padding: 50px;
-  border-radius: 18px;
+  padding: 60px 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* ===== Donation Place Management Table ===== */
-
-.form-box h2 {
-  margin-top: 20px;
-  margin-bottom: 15px;
-  font-size: 1.5rem;
-  color: #16a34a; /* green header */
+.success h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
 }
 
-.form-box .form-group {
+.success p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* =============================================== */
+/* PAYMENT METHOD STYLES */
+/* =============================================== */
+
+.payment-methods {
   display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
-.form-box .form-group input[type="text"] {
+.payment-btn {
   flex: 1;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-
-.form-box .form-group button {
-  padding: 8px 15px;
-  border: none;
-  border-radius: 6px;
+  min-width: 140px;
+  padding: 20px;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 12px;
   cursor: pointer;
+  transition: all 0.3s ease;
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
+  color: #333;
 }
 
-.form-box .form-group button.primary {
-  background-color: #16a34a;
+.payment-btn:hover {
+  border-color: #2e7d32;
+  background: #f0fdf4;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.15);
+}
+
+.payment-btn.active {
+  border-color: #2e7d32;
+  background: #e8f5e9;
+  box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+}
+
+.payment-form {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.payment-form.active {
+  display: block;
+}
+
+.payment-form h4 {
+  color: #2e7d32;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+/* =============================================== */
+/* ADMIN DASHBOARD STYLES */
+/* =============================================== */
+
+.container3 {
+  max-width: 1200px;
+  margin: 40px auto 100px;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.table th {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
   color: white;
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
 }
 
-.form-box .form-group button.primary:hover {
-  background-color: #15803d;
+.table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.form-box .form-group button.secondary {
-  background-color: #f3f4f6;
-  color: #111;
+.table tr:hover {
+  background: #f8f9fa;
 }
 
 #donationPlaceTable {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 15px;
-}
-
-#donationPlaceTable th,
-#donationPlaceTable td {
-  border: 1px solid #ddd;
-  padding: 10px;
-  text-align: left;
+  margin-top: 20px;
 }
 
 #donationPlaceTable th {
-  background-color: #16a34a;
+  background: #2e7d32;
   color: white;
-  font-weight: 600;
+  padding: 12px;
 }
 
-#donationPlaceTable tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-#donationPlaceTable tr:hover {
-  background-color: #e6f4ea;
+#donationPlaceTable td {
+  padding: 10px;
+  border: 1px solid #ddd;
 }
 
 #donationPlaceTable button {
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  font-size: 0.9rem;
+  padding: 6px 12px;
   margin-right: 5px;
+  border-radius: 5px;
+  font-size: 0.9rem;
 }
 
-#donationPlaceTable button:hover {
-  opacity: 0.8;
-}
+/* =============================================== */
+/* GET INVOLVED PAGE */
+/* =============================================== */
 
-#donationPlaceTable button:first-child {
-  background-color: #facc15; /* edit button yellow */
-  color: #111;
-}
-
-#donationPlaceTable button:last-child {
-  background-color: #ef4444; /* remove button red */
-  color: white;
-}
-
-/*=======================================================================================================================*/
-
-/*=================================================GET INVOLVED PAGE STYLES==============================================*/
-
-/*=======================================================================================================================*/
-
-/* === get involved === */
 .container {
-  max-width: 900px;
-  margin: auto;
+  max-width: 800px;
+  margin: 40px auto 100px;
   padding: 30px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-size: 22px;
+.container label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
 }
 
-/* ===== FORM ELEMENTS ===== */
-.form-box {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 4px;
-}
-
-.input-box,
-textarea {
+.container input,
+.container select,
+.container textarea {
   width: 100%;
-  background-color: #e0e0e0;
-  border: none;
-  padding: 12px;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   margin-bottom: 15px;
-  font-size: 14px;
-  resize: none;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.container input:focus,
+.container select:focus,
+.container textarea:focus {
+  outline: none;
+  border-color: #2e7d32;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
 }
 
 textarea.large {
-  height: 120px;
+  min-height: 150px;
 }
 
-textarea.medium {
-  height: 100px;
-}
-
-.upload-box {
-  background-color: #ddd;
-  height: 60px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #777;
-  font-size: 13px;
-  border-radius: 4px;
-}
-
-.submit-box {
+.submit-box,
+.button {
   display: inline-block;
-  border-radius: 4px;
-  background-color: #16a34a;
-  border: none;
-  color: #ffffff;
-  text-align: center;
-  font-size: 15px;
-  padding: 15px;
   width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
 }
 
-.submit-box span {
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
+.submit-box:hover,
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
 }
 
-.submit-box span:after {
-  content: "\00bb";
-  position: absolute;
-  opacity: 0;
-  right: -20px;
-  transition: 0.5s;
+/* =============================================== */
+/* ABOUT PAGE */
+/* =============================================== */
+
+.about-section {
+  padding: 20px;
 }
 
-.submit-box:hover span {
-  padding-right: 25px;
+.about-tips {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  border-left: 4px solid #2e7d32;
 }
 
-.submit-box:hover span:after {
-  opacity: 1;
-  right: 0;
+.about-tips ul {
+  margin-top: 15px;
+  padding-left: 20px;
 }
 
-/* ===== RESPONSIVE ===== */
+.about-tips li {
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+
+.about-facts {
+  background: linear-gradient(135deg, #e8f5e9 0%, #dcfce7 100%);
+  padding: 30px;
+  border-radius: 12px;
+  margin-top: 30px;
+  border: 2px solid #2e7d32;
+}
+
+.about-facts p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* =============================================== */
+/* FOOTER */
+/* =============================================== */
+
+footer {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 60px;
+  font-size: 0.95rem;
+}
+
+footer a {
+  color: #a7f3d0;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* =============================================== */
+/* RESPONSIVE DESIGN */
+/* =============================================== */
+
 @media (max-width: 768px) {
-  .container {
-    padding: 20px;
+  .navbar {
+    justify-content: center;
+  }
+
+  .navbar .logo {
+    margin-right: 0;
+    flex-basis: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .recipe-grid,
+  .tips-container {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-grid {
+    flex-direction: column;
+  }
+
+  .card {
+    flex: 1 1 100%;
+  }
+
+  .payment-methods {
+    flex-direction: column;
+  }
+  
+  .payment-btn {
+    min-width: 100%;
   }
 }
 
-form label {
-  display: block;
-  margin-top: 15px;
-}
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
 
-form input,
-form textarea {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-}
+  .hero h1 {
+    font-size: 1.75rem;
+  }
 
-.button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: #16a34a;
-  border: none;
-  color: #ffffff;
-  text-align: center;
-  font-size: 15px;
-  padding: 15px;
-  width: 100%;
-  cursor: pointer;
-}
-
-.button span {
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button span:after {
-  content: "\00bb";
-  position: absolute;
-  opacity: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button:hover span {
-  padding-right: 25px;
-}
-
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-
-/*=======================================================================================================================*/
-
-/* ================================================= FOOTER ============================================================ */
-
-/*=======================================================================================================================*/
-
-/* Footer Styles */
-footer {
-  background-color: #16a34a;
-  color: white;
-  text-align: center;
-  padding: 1rem 0;
-  margin-top: 2rem;
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .form-box {
+    padding: 25px;
+  }
 }
