@@ -42,26 +42,6 @@ function searchRecipe() {
   });
 }
 
-// Food donation centers with REAL coordinates for Malaysia
-const donationCenters = [
-  {
-    name: "Food Bank Malaysia - Alor Setar",
-    city: "Alor Setar",
-    address: "Lot 2967E, Jalan Sultanah, Taman Aman, 05350 Alor Setar, Kedah",
-    lat: 6.1248,
-    lng: 100.3678,
-    hours:
-      "Open: Everyday 9:00 am – 5:00 pm<br>Closed: Public Holiday, Thursday & Sunday",
-  },
-  {
-    name: "Food Bank Malaysia - Cyberjaya",
-    city: "Cyberjaya",
-    address: "Persiaran Rimba Permai, Cyber 10, 63000 Cyberjaya, Selangor",
-    lat: 2.9213,
-    lng: 101.6559,
-    hours: "Via appointment only",
-  },
-];
 
 /*=========================================================================================================================*/
 
