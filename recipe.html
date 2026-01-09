@@ -11,10 +11,10 @@
 <body>
     <ul class="navbar">
         <li class="logo">
-            <a href="index.html">
-                <img src="Images/Logo.webp" alt="FoodShare Logo">
-            </a>
+            <a href="index.html"><img src="Images/Logo.webp" alt="FoodShare Logo"></a>
         </li>
+        <li class="brand-name">FoodShare</li>
+        <li class="menu-toggle">&#9776;</li>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="tips.html">Tips</a></li>
@@ -26,559 +26,138 @@
     <h1 class="page-title">Creative Recipes to Reduce Food Waste</h1>
 
     <div class="search-box">
-        <input type="text" id="ingredientSearch" placeholder="Search by ingredient (e.g. bread, banana)..." onkeyup="searchRecipe()">
+        <input type="text" id="ingredientSearch" placeholder="Search by ingredient (e.g. bread, banana)..."
+            onkeyup="searchRecipe()">
     </div>
 
     <div class="recipe-grid">
+        <!-- Recipe Cards: Only showing 5 examples, repeat similar structure for all 30 -->
+        <div class="recipe-card" data-title="Vegetable Stir-Fry" data-img="Images/Recipes/vegetables_stir_fry.jpg"
+            data-ingredients="Leftover vegetables, Garlic, Soy sauce, Cooking oil"
+            data-steps="Chop all vegetables., Heat oil and sauté garlic., Add vegetables and stir-fry., Add soy sauce and serve.">
+            <img src="Images/Recipes/vegetables_stir_fry.jpg" alt="Vegetable Stir-Fry">
+            <h3>Vegetable Stir-Fry</h3>
+        </div>
 
-        <details class="recipe-card" data-ingredients="vegetables garlic soy sauce oil">
-            <summary>Vegetable Stir-Fry</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/vegetables_stir_fry.jpg" alt="Vegetable Stir-Fry" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover vegetables</li>
-                    <li>Garlic</li>
-                    <li>Soy sauce</li>
-                    <li>Cooking oil</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Chop all vegetables.</li>
-                    <li>Heat oil and sauté garlic.</li>
-                    <li>Add vegetables and stir-fry.</li>
-                    <li>Add soy sauce and serve.</li>
-                </ol>
-            </div>
-        </details>
+        <div class="recipe-card" data-title="Bread Pudding" data-img="Images/Recipes/bread_pudding.jpg"
+            data-ingredients="Stale bread, Milk, Eggs, Sugar"
+            data-steps="Tear bread into pieces., Mix with milk, eggs, and sugar., Pour into baking dish., Bake until golden.">
+            <img src="Images/Recipes/bread_pudding.jpg" alt="Bread Pudding">
+            <h3>Bread Pudding</h3>
+        </div>
 
-        <details class="recipe-card" data-ingredients="bread milk eggs sugar">
-            <summary>Bread Pudding</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/bread_pudding.jpg" alt="Bread Pudding" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Stale bread</li>
-                    <li>Milk</li>
-                    <li>Eggs</li>
-                    <li>Sugar</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Tear bread into pieces.</li>
-                    <li>Mix with milk, eggs, and sugar.</li>
-                    <li>Pour into baking dish.</li>
-                    <li>Bake until golden.</li>
-                </ol>
-            </div>
-        </details>
+        <div class="recipe-card" data-title="Smoothies" data-img="Images/Recipes/smoothie.jpg"
+            data-ingredients="Overripe fruits, Yogurt, Milk or juice"
+            data-steps="Add all ingredients to blender., Blend until smooth., Serve chilled.">
+            <img src="Images/Recipes/smoothie.jpg" alt="Smoothies">
+            <h3>Smoothies</h3>
+        </div>
 
-        <details class="recipe-card" data-ingredients="banana fruits yogurt milk juice">
-            <summary>Smoothies</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/smoothie.jpg" alt="Smoothie" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Overripe fruits</li>
-                    <li>Yogurt</li>
-                    <li>Milk or juice</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Add all ingredients to blender.</li>
-                    <li>Blend until smooth.</li>
-                    <li>Serve chilled.</li>
-                </ol>
-            </div>
-        </details>
+        <div class="recipe-card" data-title="French Toast" data-img="Images/Recipes/french_toast.jpg"
+            data-ingredients="Stale bread slices, 2 eggs, 1/2 cup milk, Optional: sugar, cinnamon"
+            data-steps="Whisk eggs and milk (add sugar/cinnamon if desired)., Dip bread slices into mixture., Fry on pan until golden brown.">
+            <img src="Images/Recipes/french_toast.jpg" alt="French Toast">
+            <h3>French Toast</h3>
+        </div>
 
-        <details class="recipe-card" data-ingredients="bread eggs milk cheese">
-            <summary>French Toast</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/french_toast.jpg" alt="French Toast" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Stale bread slices</li>
-                    <li>2 eggs</li>
-                    <li>1/2 cup milk</li>
-                    <li>Optional: sugar, cinnamon</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Whisk eggs and milk (add sugar/cinnamon if desired).</li>
-                    <li>Dip bread slices into mixture.</li>
-                    <li>Fry on pan until golden brown.</li>
-                </ol>
-            </div>
-        </details>
+        <div class="recipe-card" data-title="Fried Rice" data-img="Images/Recipes/fried-rice.jpg"
+            data-ingredients="Leftover rice, Mixed vegetables, 2 eggs, Soy sauce"
+            data-steps="Sauté vegetables in oil., Add leftover rice and mix., Scramble eggs and combine with rice., Season with soy sauce.">
+            <img src="Images/Recipes/fried-rice.jpg" alt="Fried Rice">
+            <h3>Fried Rice</h3>
+        </div>
 
-        <details class="recipe-card" data-ingredients="rice vegetables soy sauce eggs">
-            <summary>Fried Rice</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/fried-rice.jpg" alt="Fried Rice" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover rice</li>
-                    <li>Mixed vegetables</li>
-                    <li>2 eggs</li>
-                    <li>Soy sauce</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Sauté vegetables in oil.</li>
-                    <li>Add leftover rice and mix.</li>
-                    <li>Scramble eggs and combine with rice. Season with soy sauce.</li>
-                </ol>
-            </div>
-        </details>
+        <!-- Recipe 6: Mashed Potato Cakes -->
+        <div class="recipe-card" data-title="Mashed Potato Cakes" data-img="Images/Recipes/mashed-potato-cake.jpg"
+            data-ingredients="Leftover mashed potatoes, 1/2 cup cheese, 1 egg, Butter for frying"
+            data-steps="Mix mashed potatoes, cheese, and egg into a dough., Shape into patties., Fry in butter until golden.">
+            <img src="Images/Recipes/mashed-potato-cake.jpg" alt="Mashed Potato Cakes">
+            <h3>Mashed Potato Cakes</h3>
+        </div>
 
-        <details class="recipe-card" data-ingredients="potatoes cheese milk butter">
-            <summary>Mashed Potato Cakes</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/mashed-potato-cake.jpg" alt="Mashed Potato Cakes" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover mashed potatoes</li>
-                    <li>1/2 cup cheese</li>
-                    <li>1 egg</li>
-                    <li>Butter for frying</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Mix mashed potatoes, cheese, and egg into a dough.</li>
-                    <li>Shape into patties.</li>
-                    <li>Fry in butter until golden.</li>
-                </ol>
-            </div>
-        </details>
+        <!-- Recipe 7: Vegetable Pasta Bake -->
+        <div class="recipe-card" data-title="Vegetable Pasta Bake" data-img="Images/Recipes/veg-pasta-bake.jpg"
+            data-ingredients="Leftover pasta, Mixed vegetables, Cheese for topping, Tomato or cream sauce"
+            data-steps="Mix pasta, vegetables, and sauce., Transfer to baking dish and sprinkle cheese on top., Bake at 180°C for 20 minutes until golden.">
+            <img src="Images/Recipes/veg-pasta-bake.jpg" alt="Vegetable Pasta Bake">
+            <h3>Vegetable Pasta Bake</h3>
+        </div>
 
-        <details class="recipe-card" data-ingredients="vegetables pasta cheese">
-            <summary>Vegetable Pasta Bake</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/veg-pasta-bake.jpg" alt="Vegetable Pasta Bake" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover pasta</li>
-                    <li>Mixed vegetables</li>
-                    <li>Cheese for topping</li>
-                    <li>Tomato or cream sauce</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Mix pasta, vegetables, and sauce.</li>
-                    <li>Transfer to baking dish and sprinkle cheese on top.</li>
-                    <li>Bake at 180°C for 20 minutes until golden.</li>
-                </ol>
-            </div>
-        </details>
+        <!-- Recipe 8: Chicken Rice Soup -->
+        <div class="recipe-card" data-title="Chicken Rice Soup" data-img="Images/Recipes/chicken-rice-soup.jpg"
+            data-ingredients="Leftover rice, Leftover chicken, Broth or water, Egg (optional)"
+            data-steps="Boil broth and add shredded chicken., Add leftover rice and simmer 5 minutes., Optional: swirl in beaten egg for extra texture.">
+            <img src="Images/Recipes/chicken-rice-soup.jpg" alt="Chicken Rice Soup">
+            <h3>Chicken Rice Soup</h3>
+        </div>
+        
+        <!-- Recipe 9: Breakfast Sandwich -->
+        <div class="recipe-card" data-title="Breakfast Sandwich" data-img="Images/Recipes/breakfast_sandwich.webp"
+            data-ingredients="Leftover bread slices, Cheese, Leftover ham or bacon, Egg"
+            data-steps="Toast bread slices., Cook egg as desired and assemble sandwich with cheese and ham., Serve warm.">
+            <img src="Images/Recipes/breakfast_sandwich.webp" alt="Breakfast Sandwich">
+            <h3>Breakfast Sandwich</h3>
+        </div>
 
-        <details class="recipe-card" data-ingredients="rice chicken broth egg">
-            <summary>Chicken Rice Soup</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/chicken-rice-soup.jpg" alt="Chicken Rice Soup" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover rice</li>
-                    <li>Leftover chicken</li>
-                    <li>Broth or water</li>
-                    <li>Egg (optional)</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Boil broth and add shredded chicken.</li>
-                    <li>Add leftover rice and simmer 5 minutes.</li>
-                    <li>Optional: swirl in beaten egg for extra texture.</li>
-                </ol>
-            </div>
-        </details>
+        <!-- Recipe 10: Vegetable Noodle Soup -->
+        <div class="recipe-card" data-title="Vegetable Noodle Soup" data-img="Images/Recipes/veg-noodle-soup.jpg"
+            data-ingredients="Leftover vegetables, Noodles, Broth or water, Soy sauce or seasoning"
+            data-steps="Boil broth and add vegetables., Add noodles and cook until tender., Season and serve hot.">
+            <img src="Images/Recipes/veg-noodle-soup.jpg" alt="Vegetable Noodle Soup">
+            <h3>Vegetable Noodle Soup</h3>
+        </div>
 
-        <details class="recipe-card" data-ingredients="bread cheese ham egg">
-            <summary>Breakfast Sandwich</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/breakfast_sandwich.webp" alt="Breakfast Sandwich" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover bread slices</li>
-                    <li>Cheese</li>
-                    <li>Leftover ham or bacon</li>
-                    <li>Egg</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Toast bread slices.</li>
-                    <li>Cook egg as desired and assemble sandwich with cheese and ham.</li>
-                    <li>Serve warm.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="vegetables broth noodles">
-            <summary>Vegetable Noodle Soup</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/veg-noodle-soup.jpg" alt="Vegetable Noodle Soup" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover vegetables</li>
-                    <li>Noodles</li>
-                    <li>Broth or water</li>
-                    <li>Soy sauce or seasoning</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Boil broth and add vegetables.</li>
-                    <li>Add noodles and cook until tender.</li>
-                    <li>Season and serve hot.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="potatoes cheese onions eggs">
-            <summary>Potato and Cheese Frittata</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/potato-cheese-frittata.jpg" alt="Potato and Cheese Frittata" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover potatoes</li>
-                    <li>Eggs</li>
-                    <li>Cheese</li>
-                    <li>Onions or herbs</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Mix eggs, diced potatoes, cheese, and onions.</li>
-                    <li>Pour mixture into a pan and cook on medium heat.</li>
-                    <li>Flip carefully and cook until firm and golden.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="rice beans tomato spices">
-            <summary>Bean and Rice Patties</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/bean-rice-patties.jpg" alt="Bean and Rice Patties" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover rice</li>
-                    <li>Leftover beans</li>
-                    <li>Tomato paste or diced tomato</li>
-                    <li>Spices</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Mash beans and mix with rice and tomato.</li>
-                    <li>Shape into patties.</li>
-                    <li>Pan-fry until crisp.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="bread tomatoes cheese herbs">
-            <summary>Bruschetta</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/bruschetta.jpg" alt="Bruschetta" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Stale bread slices</li>
-                    <li>Diced tomatoes</li>
-                    <li>Cheese or leftover pesto</li>
-                    <li>Fresh herbs</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Toast bread slices.</li>
-                    <li>Top with tomatoes, cheese, and herbs.</li>
-                    <li>Serve as snack or appetizer.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="leftover meat vegetables wrap sauce">
-            <summary>Leftover Meat Wrap</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/leftover-beefwrap.jpg" alt="Leftover Meat Wrap" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover meat (chicken, beef, or pork)</li>
-                    <li>Vegetables</li>
-                    <li>Wraps or tortillas</li>
-                    <li>Sauce or dressing</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Warm the wrap.</li>
-                    <li>Fill with meat, vegetables, and sauce.</li>
-                    <li>Roll tightly and serve.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="rice curry vegetables cheese">
-            <summary>Leftover Curry Rice Casserole</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/leftover-curry-rice-casserole.jpg" alt="Curry Rice Casserole" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover rice</li>
-                    <li>Leftover curry</li>
-                    <li>Mixed vegetables</li>
-                    <li>Cheese for topping</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Mix leftover curry, rice, and vegetables.</li>
-                    <li>Place in baking dish, top with cheese.</li>
-                    <li>Bake at 180°C for 15-20 minutes.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="bread garlic butter herbs">
-            <summary>Garlic Bread</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/garlicbread.jpg" alt="Garlic Bread" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Stale bread slices</li>
-                    <li>Garlic cloves</li>
-                    <li>Butter</li>
-                    <li>Herbs (parsley, oregano)</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Mash garlic and mix with butter and herbs.</li>
-                    <li>Spread on bread slices.</li>
-                    <li>Bake or toast until golden.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="pasta cheese vegetables eggs">
-            <summary>Pasta Frittata</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/pasta-frittata.jpg" alt="Pasta Frittata" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover pasta</li>
-                    <li>Eggs</li>
-                    <li>Cheese</li>
-                    <li>Vegetables</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Mix pasta, eggs, cheese, and vegetables.</li>
-                    <li>Pour into pan and cook on low heat until firm.</li>
-                    <li>Flip carefully and cook the other side.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="rice milk sugar cinnamon">
-            <summary>Rice Pudding</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/rice-pudding.jpg" alt="Rice Pudding" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover rice</li>
-                    <li>Milk</li>
-                    <li>Sugar</li>
-                    <li>Cinnamon or nutmeg</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Heat milk in a pot.</li>
-                    <li>Add rice and sugar, simmer until creamy.</li>
-                    <li>Sprinkle cinnamon and serve warm or chilled.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="potatoes eggs cheese">
-            <summary>Leftover Hash Browns</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/leftover-hashbrowns.jpg" alt="Leftover Hash Browns" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover cooked potatoes</li>
-                    <li>Egg</li>
-                    <li>Cheese</li>
-                    <li>Optional: onions or herbs</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Grate leftover potatoes and mix with egg and cheese.</li>
-                    <li>Form patties and fry until crispy.</li>
-                    <li>Serve hot.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="vegetables eggs cheese tortillas">
-            <summary>Vegetable Quesadilla</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/veg-quesadillas.jpg" alt="Vegetable Quesadilla" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover vegetables</li>
-                    <li>Cheese</li>
-                    <li>Eggs (optional)</li>
-                    <li>Tortilla wraps</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Place vegetables and cheese on tortilla.</li>
-                    <li>Fold and cook on pan until cheese melts.</li>
-                    <li>Slice and serve.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="chicken rice vegetables">
-            <summary>Chicken Fried Rice Balls</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/chicken-fried-rice-balls.jpg" alt="Chicken Fried Rice Balls" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover rice</li>
-                    <li>Shredded chicken</li>
-                    <li>Vegetables</li>
-                    <li>Optional: soy sauce</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Mix rice, chicken, vegetables, and seasoning.</li>
-                    <li>Form into balls.</li>
-                    <li>Fry until golden or bake for a healthier option.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="vegetables cheese bread">
-            <summary>Stuffed Bread Rolls</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/stuffed-bread-roll.jpg" alt="Stuffed Bread Rolls" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover bread slices</li>
-                    <li>Vegetables</li>
-                    <li>Cheese</li>
-                    <li>Spices/herbs</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Flatten bread slices.</li>
-                    <li>Place vegetables and cheese, then roll tightly.</li>
-                    <li>Bake or pan-fry until golden.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="rice beans spices herbs">
-            <summary>Mexican Rice Wrap</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/mexican-rice-wrap.jpg" alt="Mexican Rice Wrap" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover rice</li>
-                    <li>Beans</li>
-                    <li>Spices (chili powder, cumin)</li>
-                    <li>Herbs</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Mix rice, beans, spices, and herbs.</li>
-                    <li>Place mixture on tortilla and wrap.</li>
-                    <li>Optional: grill for extra crispiness.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="leftover cake frosting fruits">
-            <summary>Cake Trifle</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/cake-triffle.jpg" alt="Cake Trifle" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover cake pieces</li>
-                    <li>Frosting or custard</li>
-                    <li>Fruits</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Layer cake pieces, frosting, and fruits in a glass.</li>
-                    <li>Repeat layers.</li>
-                    <li>Chill and serve.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="rice curry vegetables cheese">
-            <summary>Curry Rice Muffins</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/rice-curry-cupcake.jpg" alt="Curry Rice Muffins" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover rice</li>
-                    <li>Leftover curry</li>
-                    <li>Vegetables</li>
-                    <li>Cheese</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Mix rice, curry, and vegetables.</li>
-                    <li>Fill muffin tins, top with cheese.</li>
-                    <li>Bake at 180°C for 15-20 minutes.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="bread eggs vegetables cheese">
-            <summary>Vegetable Bread Omelette</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/veg-bread-omelette.webp" alt="Vegetable Bread Omelette" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Stale bread slices</li>
-                    <li>Eggs</li>
-                    <li>Leftover vegetables</li>
-                    <li>Cheese</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Whisk eggs and add vegetables.</li>
-                    <li>Place mixture on bread slice and cook on pan.</li>
-                    <li>Top with cheese and serve.</li>
-                </ol>
-            </div>
-        </details>
-
-        <details class="recipe-card" data-ingredients="rice vegetables soy sauce egg">
-            <summary>Rice Stir-Fry</summary>
-            <div class="recipe-content">
-                <img src="Images/Recipes/rice-stir-fry.jpg" alt="Rice Stir-Fry" class="recipe-img">
-                <p><strong>Ingredients:</strong></p>
-                <ul>
-                    <li>Leftover rice</li>
-                    <li>Vegetables</li>
-                    <li>Egg</li>
-                    <li>Soy sauce</li>
-                </ul>
-                <p><strong>Steps:</strong></p>
-                <ol>
-                    <li>Sauté vegetables in oil.</li>
-                    <li>Add rice and stir-fry.</li>
-                    <li>Push rice aside, scramble egg, then mix in.</li>
-                    <li>Season with soy sauce and serve.</li>
-                </ol>
-            </div>
-        </details>
 
     </div>
 
+    <!-- Modal -->
+    <div id="recipeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <img id="modalImg" src="" alt="">
+            <h3>Ingredients:</h3>
+            <ul id="modalIngredients"></ul>
+            <h3>Steps:</h3>
+            <ol id="modalSteps"></ol>
+        </div>
+    </div>
+
     <footer>
-        &copy; FoodShare | Contact Us: <a href="mailto:s75142@ocean.umt.edu.my">Our Email</a>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About FoodShare</h3>
+                <p>FoodShare is a community-driven platform dedicated to reducing food waste and fighting hunger.
+                    We connect people with surplus food to those in need, provide creative leftover recipes, and
+                    educate communities about sustainable food practices.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Sitemap</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="tips.html">Tips</a></li>
+                    <li><a href="recipe.html">Recipes</a></li>
+                    <li><a href="donate.html">Donation</a></li>
+                    <li><a href="getinvolved.html">Get Involved</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:s75142@ocean.umt.edu.my">s75142@ocean.umt.edu.my</a></p>
+                <p>Join us in making a difference, one meal at a time!</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 FoodShare Malaysia. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
+
 </body>
 
 </html>

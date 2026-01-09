@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
   min-height: 100vh;
   color: #2b2b2b;
@@ -34,13 +34,30 @@ body {
 }
 
 .navbar .logo {
-  margin-right: auto;
+  margin-right: 10px;
 }
 
 .navbar .logo img {
   height: 50px;
   width: auto;
   cursor: pointer;
+}
+
+.navbar .brand-name {
+  margin-right: auto;
+}
+
+.navbar .brand-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+}
+
+.navbar .brand-name a:hover {
+  background: none;
+  transform: none;
 }
 
 .navbar li {
@@ -62,6 +79,55 @@ body {
 .navbar li a.active {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
+}
+
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+}
+
+/* ===== TABLET ===== */
+@media (max-width: 1024px) {
+  .navbar li a {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  /* HIDE LINKS (A TAGS) */
+  .navbar li a {
+    display: none;
+  }
+
+  /* SHOW LINKS WHEN ACTIVE */
+  .navbar.active li a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .brand-name {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+  }
 }
 
 /* =============================================== */
@@ -121,6 +187,10 @@ h3 {
   justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
+}
+
+#adminLogin .view {
+  display: none;
 }
 
 /* =============================================== */
@@ -377,83 +447,141 @@ button.secondary:hover {
   border-color: #2e7d32;
   box-shadow: 0 6px 20px rgba(46, 125, 50, 0.2);
 }
-
+/* Grid and card styles */
 .recipe-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  padding: 0 20px;
-  max-width: 1400px;
-  margin: 0 auto 100px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.recipe-grid.single-recipe {
+  justify-content: center;
+}
+
+.recipe-grid.single-recipe .recipe-card {
+  max-width: 250px;
 }
 
 .recipe-card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: all 0.3s ease;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .recipe-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
 }
 
-.recipe-card.hidden {
+.recipe-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.recipe-card h3 {
+  margin: 10px 0 0 0;
+  color: rgb(21, 163, 73);
+}
+
+/* Hidden class for search filtering */
+.hidden {
   display: none;
 }
 
-.recipe-card summary {
-  cursor: pointer;
-  padding: 25px;
-  list-style: none;
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #2e7d32;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  transition: all 0.3s ease;
-  user-select: none;
-}
-
-.recipe-card summary::-webkit-details-marker {
+/* Modal Styles */
+.modal {
   display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
 }
 
-.recipe-card summary:hover {
-  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.recipe-content {
-  padding: 25px;
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  transform: scale(0.9);
+  animation: scaleIn 0.3s ease-out forwards;
+  position: relative;
 }
 
-.recipe-img {
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-content img {
   width: 100%;
   height: 250px;
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
 
-.recipe-card p {
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  color: #aaa;
+  font-size: 30px;
   font-weight: bold;
-  color: #333;
-  margin: 20px 0 10px;
-  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
-.recipe-card ul,
-.recipe-card ol {
-  margin-left: 20px;
-  color: #555;
+.close:hover {
+  color: #000;
 }
 
-.recipe-card li {
+.modal-content h2 {
+  margin-top: 0;
+  color: rgb(21, 163, 73);
+}
+
+.modal-content h3 {
+  color: rgb(21, 163, 73);
   margin-bottom: 10px;
-  line-height: 1.7;
 }
 
+.modal-content ul,
+.modal-content ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.modal-content li {
+  margin-bottom: 5px;
+}
 /* =============================================== */
 /* TIPS PAGE STYLES */
 /* =============================================== */
@@ -478,6 +606,51 @@ button.secondary:hover {
 .tips-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.page-title2 {
+  text-align: center;
+  margin: 0 20px 40px;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.video-section {
+  max-width: 800px;
+  margin: 0 auto 50px;
+  padding: 0 20px;
+}
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-container p {
+  text-align: center;
+  margin-top: 15px;
+  color: #666;
+  font-style: italic;
+}
+
+.content-image {
+  margin-bottom: 15px;
+}
+
+.content-image img {
+  width: 100%;
+  border-radius: 10px;
 }
 
 .tips-content {
@@ -740,8 +913,78 @@ button.secondary:hover {
 }
 
 /* =============================================== */
+/* Admin Login Page Styles */
+/* =============================================== */
+
+.admin-login-container {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.admin-login-container h1 {
+  text-align: center;
+  color: #2e7d32;
+  margin-bottom: 30px;
+}
+
+.form-box {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-box .secondary {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.form-box p {
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+  font-size: 0.9rem;
+}
+/* =============================================== */
 /* ADMIN DASHBOARD STYLES */
 /* =============================================== */
+
+.summary {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.summary1 {
+  background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  flex: 1;
+  min-width: 200px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.summary1 h3 {
+  margin: 0;
+  color: white;
+}
+
+.summary1 p {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 10px 0 0 0;
+}
+.form-box .form-group {
+  display: flex;
+  gap: 10px;
+}
+
+.logout-buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+}
 
 .container3 {
   max-width: 1200px;
@@ -884,6 +1127,12 @@ textarea.large {
   padding: 20px;
 }
 
+.about-section p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
 .about-tips {
   background: #f8f9fa;
   padding: 25px;
@@ -892,6 +1141,24 @@ textarea.large {
   border-left: 4px solid #2e7d32;
 }
 
+.about-tips .content-image {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.about-tips .content-image img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.about-tips .content-image p {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+}
 .about-tips ul {
   margin-top: 15px;
   padding-left: 20px;
@@ -916,6 +1183,31 @@ textarea.large {
   color: #333;
 }
 
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.video-p {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 /* =============================================== */
 /* FOOTER */
 /* =============================================== */
@@ -923,10 +1215,62 @@ textarea.large {
 footer {
   background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%);
   color: white;
-  text-align: center;
-  padding: 20px;
+  padding: 40px 20px 20px;
   margin-top: 60px;
-  font-size: 0.95rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.footer-section h3 {
+  color: white;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.footer-section p {
+  line-height: 1.8;
+  color: #e8f5e9;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #a7f3d0;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: white;
+  transform: translateX(5px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.9rem;
 }
 
 footer a {
@@ -937,6 +1281,7 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
+  color: white;
 }
 
 /* =============================================== */
@@ -983,7 +1328,7 @@ footer a:hover {
   .payment-methods {
     flex-direction: column;
   }
-  
+
   .payment-btn {
     min-width: 100%;
   }
@@ -1002,7 +1347,7 @@ footer a:hover {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
   }
-  
+
   .form-box {
     padding: 25px;
   }

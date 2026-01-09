@@ -16,25 +16,97 @@ document.addEventListener("DOMContentLoaded", () => {
       link.classList.add("active");
     }
   });
+  /* Mobile menu toggle (SAFE) */
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navbar = document.querySelector(".navbar");
+
+  if (menuToggle && navbar) {
+    menuToggle.addEventListener("click", () => {
+      navbar.classList.toggle("active");
+    });
+  }
 });
 
 /* =========================================================== */
 /* RECIPE SEARCH FUNCTIONALITY */
 /* =========================================================== */
 
+const modal = document.getElementById("recipeModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalImg = document.getElementById("modalImg");
+const modalIngredients = document.getElementById("modalIngredients");
+const modalSteps = document.getElementById("modalSteps");
+const closeBtn = document.querySelector(".close");
+
+// Ensure modal is hidden on page load
+if (window.location.pathname.split("/").pop() === "recipe.html") {
+  modal.style.display = "none";
+  document.querySelectorAll(".recipe-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      modalTitle.textContent = card.dataset.title;
+      modalImg.src = card.dataset.img;
+      modalImg.alt = card.dataset.title;
+
+      // Ingredients
+      modalIngredients.innerHTML = "";
+      card.dataset.ingredients.split(",").forEach((ing) => {
+        const li = document.createElement("li");
+        li.textContent = ing.trim();
+        modalIngredients.appendChild(li);
+      });
+
+      // Steps
+      modalSteps.innerHTML = "";
+      card.dataset.steps.split(".,").forEach((step) => {
+        const trimmed = step.trim();
+        if (trimmed) {
+          const li = document.createElement("li");
+          li.textContent = trimmed.replace(/\.$/, "");
+          modalSteps.appendChild(li);
+        }
+      });
+
+      modal.style.display = "flex";
+    });
+  });
+
+  closeBtn.onclick = () => (modal.style.display = "none");
+  window.onclick = (event) => {
+    if (event.target == modal) modal.style.display = "none";
+  };
+}
+
 function searchRecipe() {
   const input = document.getElementById("ingredientSearch").value.toLowerCase();
   const recipes = document.querySelectorAll(".recipe-card");
+  const grid = document.querySelector(".recipe-grid");
+
+  let visibleCount = 0;
 
   recipes.forEach((recipe) => {
-    const ingredients = recipe.getAttribute("data-ingredients");
+    const title = recipe.getAttribute("data-title").toLowerCase();
+    const ingredients = recipe.getAttribute("data-ingredients").toLowerCase();
+    const steps = recipe.getAttribute("data-steps").toLowerCase();
 
-    if (ingredients.includes(input)) {
+    // Check if the input matches any part of title, ingredients, or steps
+    if (
+      title.includes(input) ||
+      ingredients.includes(input) ||
+      steps.includes(input)
+    ) {
       recipe.classList.remove("hidden");
+      visibleCount++;
     } else {
       recipe.classList.add("hidden");
     }
   });
+
+  // If only one recipe is visible, center it and limit its width
+  if (visibleCount === 1) {
+    grid.classList.add("single-recipe");
+  } else {
+    grid.classList.remove("single-recipe");
+  }
 }
 
 /* =========================================================== */
@@ -286,6 +358,20 @@ window.addEventListener("load", () => {
   renderDonationPlaces();
 });
 
+function showPaymentMethod(method) {
+  // Remove active class from all buttons and forms
+  document
+    .querySelectorAll(".payment-btn")
+    .forEach((btn) => btn.classList.remove("active"));
+  document
+    .querySelectorAll(".payment-form")
+    .forEach((form) => form.classList.remove("active"));
+
+  // Add active class to selected button and form
+  event.target.closest(".payment-btn").classList.add("active");
+  document.getElementById(method).classList.add("active");
+}
+
 /* =========================================================== */
 /* ADMIN LOGIN */
 /* =========================================================== */
@@ -294,6 +380,8 @@ window.addEventListener("load", () => {
 document.addEventListener("keydown", (event) => {
   if (event.ctrlKey && event.shiftKey && event.code === "KeyA") {
     window.location.href = "adminLogin.html";
+
+    event.preventDefault();
   }
 });
 
