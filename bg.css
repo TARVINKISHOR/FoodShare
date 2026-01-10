@@ -928,17 +928,17 @@ button.secondary:hover {
   margin-bottom: 30px;
 }
 
-.form-box {
+.form-box-admin {
   max-width: 400px;
   margin: 0 auto;
 }
 
-.form-box .secondary {
+.form-box-admin .secondary {
   width: 100%;
   margin-top: 10px;
 }
 
-.form-box p {
+.form-box-admin p {
   text-align: center;
   margin-top: 20px;
   color: #666;
