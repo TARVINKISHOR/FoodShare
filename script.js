@@ -275,6 +275,255 @@ function confirmFoodDonation() {
 }
 
 /* =========================================================== */
+/* MONEY DONATION VALIDATION */
+/* =========================================================== */
+
+function validateMoneyDonation() {
+  // Get active payment form
+  const onlineBankingForm = document.getElementById("online-banking");
+  const cardForm = document.getElementById("card");
+
+  const isOnlineBanking = onlineBankingForm.classList.contains("active");
+  const isCard = cardForm.classList.contains("active");
+
+  if (isOnlineBanking) {
+    return validateOnlineBanking();
+  } else if (isCard) {
+    return validateCard();
+  }
+
+  alert("Please select a payment method");
+  return false;
+}
+
+function validateOnlineBanking() {
+  const amount = document.getElementById("bankAmount").value.trim();
+  const bank = document.getElementById("bankSelect").value;
+  const account = document.getElementById("bankAccount").value.trim();
+  const pin = document.getElementById("bankPin").value.trim();
+
+  // Validate amount
+  if (!amount || amount === "") {
+    alert("Please enter a donation amount");
+    document.getElementById("bankAmount").focus();
+    return false;
+  }
+
+  if (parseFloat(amount) <= 0) {
+    alert("Donation amount must be greater than RM 0");
+    document.getElementById("bankAmount").focus();
+    return false;
+  }
+
+  if (parseFloat(amount) < 1) {
+    alert("Minimum donation amount is RM 1");
+    document.getElementById("bankAmount").focus();
+    return false;
+  }
+
+  // Validate bank selection
+  if (!bank || bank === "") {
+    alert("Please select your bank");
+    document.getElementById("bankSelect").focus();
+    return false;
+  }
+
+  // Validate account number
+  if (!account || account === "") {
+    alert("Please enter your account number");
+    document.getElementById("bankAccount").focus();
+    return false;
+  }
+
+  if (account.length < 8) {
+    alert("Account number must be at least 8 digits");
+    document.getElementById("bankAccount").focus();
+    return false;
+  }
+
+  // Validate PIN
+  if (!pin || pin === "") {
+    alert("Please enter your 6-digit PIN");
+    document.getElementById("bankPin").focus();
+    return false;
+  }
+
+  if (pin.length !== 6) {
+    alert("PIN must be exactly 6 digits");
+    document.getElementById("bankPin").focus();
+    return false;
+  }
+
+  if (!/^\d+$/.test(pin)) {
+    alert("PIN must contain only numbers");
+    document.getElementById("bankPin").focus();
+    return false;
+  }
+
+  // Save donation record
+  saveMoneyDonation("Online Banking", amount, bank);
+  return true;
+}
+
+function validateCard() {
+  const amount = document.getElementById("cardAmount").value.trim();
+  const cardNumber = document.getElementById("cardNumber").value.trim();
+  const cardName = document.getElementById("cardName").value.trim();
+  const expiry = document.getElementById("cardExpiry").value.trim();
+  const cvv = document.getElementById("cardCvv").value.trim();
+
+  // Validate amount
+  if (!amount || amount === "") {
+    alert("Please enter a donation amount");
+    document.getElementById("cardAmount").focus();
+    return false;
+  }
+
+  if (parseFloat(amount) <= 0) {
+    alert("Donation amount must be greater than RM 0");
+    document.getElementById("cardAmount").focus();
+    return false;
+  }
+
+  if (parseFloat(amount) < 1) {
+    alert("Minimum donation amount is RM 1");
+    document.getElementById("cardAmount").focus();
+    return false;
+  }
+
+  // Validate card number
+  if (!cardNumber || cardNumber === "") {
+    alert("Please enter your card number");
+    document.getElementById("cardNumber").focus();
+    return false;
+  }
+
+  const cleanCardNumber = cardNumber.replace(/\s/g, "");
+  if (cleanCardNumber.length < 13 || cleanCardNumber.length > 19) {
+    alert("Card number must be between 13 and 19 digits");
+    document.getElementById("cardNumber").focus();
+    return false;
+  }
+
+  if (!/^\d+$/.test(cleanCardNumber)) {
+    alert("Card number must contain only numbers");
+    document.getElementById("cardNumber").focus();
+    return false;
+  }
+
+  // Validate cardholder name
+  if (!cardName || cardName === "") {
+    alert("Please enter the cardholder name");
+    document.getElementById("cardName").focus();
+    return false;
+  }
+
+  if (cardName.length < 3) {
+    alert("Cardholder name is too short");
+    document.getElementById("cardName").focus();
+    return false;
+  }
+
+  // Validate expiry date
+  if (!expiry || expiry === "") {
+    alert("Please enter the card expiry date");
+    document.getElementById("cardExpiry").focus();
+    return false;
+  }
+
+  if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+    alert("Expiry date must be in MM/YY format");
+    document.getElementById("cardExpiry").focus();
+    return false;
+  }
+
+  const [month, year] = expiry.split("/");
+  if (parseInt(month) < 1 || parseInt(month) > 12) {
+    alert("Invalid month. Please enter a month between 01 and 12");
+    document.getElementById("cardExpiry").focus();
+    return false;
+  }
+
+  // Check if card is expired
+  const currentYear = new Date().getFullYear() % 100;
+  const currentMonth = new Date().getMonth() + 1;
+  if (
+    parseInt(year) < currentYear ||
+    (parseInt(year) === currentYear && parseInt(month) < currentMonth)
+  ) {
+    alert("Card has expired");
+    document.getElementById("cardExpiry").focus();
+    return false;
+  }
+
+  // Validate CVV
+  if (!cvv || cvv === "") {
+    alert("Please enter the CVV");
+    document.getElementById("cardCvv").focus();
+    return false;
+  }
+
+  if (cvv.length !== 3 && cvv.length !== 4) {
+    alert("CVV must be 3 or 4 digits");
+    document.getElementById("cardCvv").focus();
+    return false;
+  }
+
+  if (!/^\d+$/.test(cvv)) {
+    alert("CVV must contain only numbers");
+    document.getElementById("cardCvv").focus();
+    return false;
+  }
+
+  // Save donation record
+  saveMoneyDonation(
+    "Credit/Debit Card",
+    amount,
+    "Card ending in " + cleanCardNumber.slice(-4)
+  );
+  return true;
+}
+
+function saveMoneyDonation(method, amount, details) {
+  const donation = {
+    method: method,
+    amount: parseFloat(amount),
+    details: details,
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString(),
+  };
+
+  let moneyDonations = JSON.parse(
+    localStorage.getItem("moneyDonations") || "[]"
+  );
+  moneyDonations.push(donation);
+  localStorage.setItem("moneyDonations", JSON.stringify(moneyDonations));
+}
+
+function confirmMoneyDonation() {
+  if (validateMoneyDonation()) {
+    // Clear form fields
+    clearMoneyDonationForms();
+    show("success");
+  }
+}
+
+function clearMoneyDonationForms() {
+  // Clear online banking form
+  document.getElementById("bankAmount").value = "";
+  document.getElementById("bankSelect").value = "";
+  document.getElementById("bankAccount").value = "";
+  document.getElementById("bankPin").value = "";
+
+  // Clear card form
+  document.getElementById("cardAmount").value = "";
+  document.getElementById("cardNumber").value = "";
+  document.getElementById("cardName").value = "";
+  document.getElementById("cardExpiry").value = "";
+  document.getElementById("cardCvv").value = "";
+}
+
+/* =========================================================== */
 /* DONATION PLACES MANAGEMENT */
 /* =========================================================== */
 
@@ -352,12 +601,6 @@ function removeDonationPlace(index) {
   }
 }
 
-// Initialize on page load
-window.addEventListener("load", () => {
-  populateDonationPlaces();
-  renderDonationPlaces();
-});
-
 function showPaymentMethod(method) {
   // Remove active class from all buttons and forms
   document
@@ -426,21 +669,37 @@ if (window.location.pathname.includes("adminDashboard.html")) {
 
 // Load and render admin data
 window.addEventListener("load", () => {
-  // Only run on admin dashboard
+  // Initialize donation places for donate page
+  populateDonationPlaces();
+  renderDonationPlaces();
+
+  // Only run admin dashboard code on admin dashboard page
   if (!window.location.pathname.includes("adminDashboard.html")) return;
 
   let donations = JSON.parse(localStorage.getItem("foodDonations") || "[]");
+  let moneyDonations = JSON.parse(
+    localStorage.getItem("moneyDonations") || "[]"
+  );
   let pledges = JSON.parse(localStorage.getItem("pledges") || "[]");
+
+  // Calculate total money donated
+  let totalMoney = moneyDonations.reduce((sum, d) => sum + d.amount, 0);
 
   // Update counts
   const pledgeCount = document.getElementById("pledgeCount");
   const donationCount = document.getElementById("donationCount");
+  const moneyDonationCount = document.getElementById("moneyDonationCount");
+  const totalMoneyAmount = document.getElementById("totalMoneyAmount");
 
   if (pledgeCount) pledgeCount.innerText = pledges.length;
   if (donationCount) donationCount.innerText = donations.length;
+  if (moneyDonationCount) moneyDonationCount.innerText = moneyDonations.length;
+  if (totalMoneyAmount)
+    totalMoneyAmount.innerText = `RM ${totalMoney.toFixed(2)}`;
 
   // Render tables
   renderDonations();
+  renderMoneyDonations();
   renderPledges();
 });
 
@@ -452,6 +711,16 @@ function renderDonations() {
   const donations = JSON.parse(localStorage.getItem("foodDonations") || "[]");
 
   tbody.innerHTML = "";
+
+  if (donations.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="5" style="text-align: center; color: #999;">No food donations yet</td>
+      </tr>
+    `;
+    return;
+  }
+
   donations.forEach((d, index) => {
     const itemsList = d.items.map((i) => `${i.name} (${i.qty})`).join(", ");
     const address = `${d.address.address1}, ${d.address.city}, ${d.address.state} ${d.address.postcode}`;
@@ -465,6 +734,39 @@ function renderDonations() {
         <button class="btn-edit" onclick="editPlace(${index})">Edit</button>
       </td>
       <td>${d.date}</td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+function renderMoneyDonations() {
+  const table = document.getElementById("moneyDonationTable");
+  if (!table) return;
+
+  const tbody = table.querySelector("tbody");
+  const moneyDonations = JSON.parse(
+    localStorage.getItem("moneyDonations") || "[]"
+  );
+
+  tbody.innerHTML = "";
+
+  if (moneyDonations.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="5" style="text-align: center; color: #999;">No money donations yet</td>
+      </tr>
+    `;
+    return;
+  }
+
+  moneyDonations.forEach((d, index) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${d.method}</td>
+      <td>RM ${d.amount.toFixed(2)}</td>
+      <td>${d.details}</td>
+      <td>${d.date} ${d.time}</td>
     `;
     tbody.appendChild(row);
   });
@@ -497,6 +799,16 @@ function renderPledges() {
   const pledges = JSON.parse(localStorage.getItem("pledges") || "[]");
 
   tbody.innerHTML = "";
+
+  if (pledges.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="6" style="text-align: center; color: #999;">No pledges yet</td>
+      </tr>
+    `;
+    return;
+  }
+
   pledges.forEach((p, index) => {
     const row = document.createElement("tr");
     row.innerHTML = `
@@ -515,20 +827,11 @@ function goHome() {
   window.location.href = "index.html";
 }
 
-function showPaymentMethod(method) {
-  // Remove active class from all buttons and forms
-  document
-    .querySelectorAll(".payment-btn")
-    .forEach((btn) => btn.classList.remove("active"));
-  document
-    .querySelectorAll(".payment-form")
-    .forEach((form) => form.classList.remove("active"));
-
-  // Add active class to selected button and form
-  event.target.closest(".payment-btn").classList.add("active");
-  document.getElementById(method).classList.add("active");
+function logout() {
+  localStorage.removeItem("isAdminLoggedIn");
+  alert("You have been logged out.");
+  window.location.href = "index.html";
 }
-
 /* =========================================================== */
 /* GET INVOLVED - FORM VALIDATION & SUBMISSION */
 /* =========================================================== */

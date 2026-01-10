@@ -26,6 +26,14 @@
                     <h3>Total Donations</h3>
                     <p><span id="donationCount">0</span></p>
                 </div>
+                <div class="summary1">
+                    <h3>Money Donations</h3>
+                    <p id="moneyDonationCount">0</p>
+                </div>
+                <div class="summary1">
+                    <h3>Total Amount</h3>
+                    <p id="totalMoneyAmount">RM 0.00</p>
+                </div>
             </div>
 
             <!-- Donation List -->
@@ -41,6 +49,22 @@
                     </tr>
                 </thead>
                 <tbody></tbody>
+            </table>
+
+            <h2>Money Donations</h2>
+            <table class="table" id="moneyDonationTable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Payment Method</th>
+                        <th>Amount</th>
+                        <th>Details</th>
+                        <th>Date & Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Money donations will be populated here -->
+                </tbody>
             </table>
 
             <!-- Pledge List -->
