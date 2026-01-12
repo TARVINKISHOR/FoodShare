@@ -659,6 +659,14 @@ function adminLogout() {
 /* ADMIN DASHBOARD */
 /* =========================================================== */
 
+// Hello Admin message
+if (window.location.pathname.includes("adminDashboard.html")) {
+  const adminGreeting = document.getElementById("adminGreeting");
+  if (adminGreeting) {
+    adminGreeting.innerText = `Hello, ${ADMIN_USER}!`;
+  } 
+}
+
 // Check admin session on dashboard page
 if (window.location.pathname.includes("adminDashboard.html")) {
   if (localStorage.getItem("isAdminLoggedIn") !== "true") {
@@ -666,6 +674,7 @@ if (window.location.pathname.includes("adminDashboard.html")) {
     window.location.href = "index.html";
   }
 }
+
 
 // Load and render admin data
 window.addEventListener("load", () => {
