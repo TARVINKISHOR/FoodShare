@@ -137,7 +137,7 @@ body {
 .page-title {
   text-align: center;
   margin: 40px 20px 30px;
-  color: #2e7d32;
+  color: #2e7d32; 
   font-size: 2.5rem;
   font-weight: 700;
 }
@@ -163,23 +163,50 @@ h3 {
 /* =============================================== */
 
 .hero {
-  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
-  text-align: center;
-  padding: 5rem 2rem;
+  position: relative;
   margin: 0;
+  height: 500px; /* Matches the approximate height of 5rem padding * 2 + content */
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  border-radius: 0;
+  margin-bottom: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text readability */
+  text-align: center;
 }
 
 .hero h1 {
   font-size: 3rem;
-  color: #1f2937;
+  color: white;
   margin-bottom: 1rem;
   font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .hero p {
   font-size: 1.3rem;
-  color: #4b5563;
+  color: white;
   margin-bottom: 2.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .hero-buttons {
